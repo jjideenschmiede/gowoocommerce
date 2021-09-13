@@ -35,8 +35,12 @@ r := &gowoocommerce.Request{
 
 // Define body data
 body := gowoocommerce.ProductCategory{
-    Name: "",
-    Image: gowoocommerce.ProductCategoryImage{
+    Name:        "",
+    Parent:      0,
+    Description: "",
+    Display:     "",
+    MenuOrder:   0,
+    Image: ProductCategoryImage{
         Src: "",
     },
 }
