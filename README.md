@@ -40,13 +40,66 @@ body := gowoocommerce.ProductCategory{
     Description: "",
     Display:     "",
     MenuOrder:   0,
-    Image: ProductCategoryImage{
+    Image: gowoocommerce.ProductCategoryImage{
         Src: "",
     },
 }
 
-// Get all product categories
+// Create a new product category
 category, err := gowoocommerce.AddProductCategory(body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(category)
+}
+```
+
+## Update a product category
+
+If you want to renew an existing product category, then this actually works like creating a new category. In the function, however, the ID of the category must be specified. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-a-product-category).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    baseUrl:        "",
+    consumerKey:    "",
+    consumerSecret: "",
+}
+
+
+// Define body data
+body := gowoocommerce.ProductCategory{
+    Name:        "",
+    Parent:      0,
+    Description: "",
+    Display:     "",
+    MenuOrder:   0,
+    Image: gowoocommerce.ProductCategoryImage{
+        Src: "",
+    },
+}
+
+// Update a product category
+category, err := gowoocommerce.UpdateProductCategory(0, body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(category)
+}
+```
+
+## Delete a product category
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    baseUrl:        "",
+    consumerKey:    "",
+    consumerSecret: "",
+}
+
+// Remove a product categories
+category, err := gowoocommerce.DeleteProductCategory(18, true, r)
 if err != nil {
     fmt.Println(err)
 } else {
