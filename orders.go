@@ -16,6 +16,7 @@ import (
 	"fmt"
 )
 
+// OrdersReturn is to decode the json data
 type OrdersReturn struct {
 	Id                int    `json:"id"`
 	ParentId          int    `json:"parent_id"`
@@ -146,10 +147,10 @@ type OrdersReturn struct {
 }
 
 // Orders is to get all orders since id
-func Orders(id string, r *Request) (*[]OrdersReturn, error) {
+func Orders(page int, r *Request) ([]OrdersReturn, error) {
 
 	// Set config for new request
-	c := Config{fmt.Sprintf("/wp-json/wc/v3/orders?after=%s&per_page=200", id), "GET", nil}
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/orders?page=%d&per_page=100", page), "GET", nil}
 
 	// Send request
 	response, err := c.Send(r)
@@ -169,6 +170,6 @@ func Orders(id string, r *Request) (*[]OrdersReturn, error) {
 	}
 
 	// Return data
-	return &decode, err
+	return decode, err
 
 }
