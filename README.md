@@ -90,6 +90,8 @@ if err != nil {
 
 ## Delete a product category
 
+To delete a category, only the ID of the category is needed. You can use this function to remove the category. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#delete-a-product-category).
+
 ```go
 // Define the request
 r := &gowoocommerce.Request{
