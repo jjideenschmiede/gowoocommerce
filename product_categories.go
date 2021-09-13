@@ -13,6 +13,7 @@ package gowoocommerce
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // ProductCategory is to structure the category data
@@ -89,6 +90,68 @@ func AddProductCategory(body ProductCategory, r *Request) (ProductCategoriesRetu
 
 	// Set config for new request
 	c := Config{"/wp-json/wc/v3/products/categories", "POST", convert}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return ProductCategoriesReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode ProductCategoriesReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return ProductCategoriesReturn{}, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
+// UpdateProductCategory is to update an existing category
+func UpdateProductCategory(id int, body ProductCategory, r *Request) (ProductCategoriesReturn, error) {
+
+	// Convert body data
+	convert, err := json.Marshal(body)
+	if err != nil {
+		return ProductCategoriesReturn{}, err
+	}
+
+	// Set config for new request
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/categories/%d", id), "POST", convert}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return ProductCategoriesReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode ProductCategoriesReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return ProductCategoriesReturn{}, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
+// DeleteProductCategory is to delete a product category
+func DeleteProductCategory(id int, force bool, r *Request) (ProductCategoriesReturn, error) {
+
+	// Set config for new request
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/categories/%d?force=%t", id, force), "DELETE", nil}
 
 	// Send request
 	response, err := c.Send(r)
