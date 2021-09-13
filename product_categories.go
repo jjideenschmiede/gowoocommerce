@@ -15,6 +15,16 @@ import (
 	"encoding/json"
 )
 
+// ProductCategory is to structure the category data
+type ProductCategory struct {
+	Name  string               `json:"name"`
+	Image ProductCategoryImage `json:"image"`
+}
+
+type ProductCategoryImage struct {
+	Src string `json:"src"`
+}
+
 // ProductCategoriesReturn is to decode the json data
 type ProductCategoriesReturn struct {
 	Id          int         `json:"id"`
@@ -57,6 +67,40 @@ func ProductCategories(r *Request) ([]ProductCategoriesReturn, error) {
 	err = json.NewDecoder(response.Body).Decode(&decode)
 	if err != nil {
 		return nil, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
+// AddProductCategory is to create a new category
+func AddProductCategory(body ProductCategory, r *Request) (ProductCategoriesReturn, error) {
+
+	// Convert body data
+	convert, err := json.Marshal(body)
+	if err != nil {
+		return ProductCategoriesReturn{}, err
+	}
+
+	// Set config for new request
+	c := Config{"/wp-json/wc/v3/products/categories", "POST", convert}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return ProductCategoriesReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode ProductCategoriesReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return ProductCategoriesReturn{}, err
 	}
 
 	// Return data
