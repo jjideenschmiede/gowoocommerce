@@ -228,6 +228,186 @@ if err != nil {
 }
 ```
 
+## Product variations
+
+If you want to read out all variants for a product, you can do this as follows. The ID of the variant product is required. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-product-variations).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    baseUrl:        "",
+    consumerKey:    "",
+    consumerSecret: "",
+}
+
+// Read all product variations
+productVariations, err := gowoocommerce.ProductVariations(33, 1, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productVariations)
+}
+```
+
+## Create a product variant
+
+If you want to create a new variant, you can do so using this function. Thereby some values are needed. The library returns these as values if they should occur. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#create-a-product-variation).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+baseUrl:        "",
+consumerKey:    "",
+consumerSecret: "",
+}
+
+// Define body
+body := gowoocommerce.ProductVariationsBody{
+    Description:       "Our Version for Shopify.",
+    Permalink:         "",
+    Sku:               "",
+    Price:             "255",
+    RegularPrice:      "",
+    SalePrice:         "215",
+    DateOnSaleFrom:    nil,
+    DateOnSaleFromGmt: nil,
+    DateOnSaleTo:      nil,
+    DateOnSaleToGmt:   nil,
+    OnSale:            false,
+    Status:            "publish",
+    Purchasable:       false,
+    Virtual:           false,
+    Downloadable:      false,
+    Downloads:         nil,
+    DownloadLimit:     -1,
+    DownloadExpiry:    -1,
+    TaxStatus:         "taxable",
+    TaxClass:          "",
+    ManageStock:       false,
+    StockQuantity:     nil,
+    StockStatus:       "instock",
+    Backorders:        "no",
+    BackordersAllowed: false,
+    Backordered:       false,
+    Weight:            "",
+    Dimensions:        gowoocommerce.ProductVariationsBodyDimensions{},
+    ShippingClass:     "",
+    ShippingClassId:   0,
+    Image: gowoocommerce.ProductVariationsBodyImages{
+        Src:  "https://shop.jj-ideenschmiede.de/thumbnail/3e/81/e8/1621082068/jj-interface-shop_1920x1920.png",
+        Name: "J&J Interface",
+        Alt:  "J&J Interface",
+    },
+    Attributes: []gowoocommerce.ProductVariationsBodyAttributes{},
+    MenuOrder:  0,
+    MetaData:   nil,
+}
+
+// Add attribute
+body.Attributes = append(body.Attributes, gowoocommerce.ProductVariationsBodyAttributes{
+    Name:   "Shopsoftware",
+    Option: "WooCommerce",
+})
+
+// Create a new variant to a product
+productVariations, err := gowoocommerce.CreateProductVariations(33, body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productVariations)
+}
+```
+
+## Update a product variant
+
+If you want to update a variant, you can do this as follows. Everything is the same as when you create a variant. Only the ID of the variant must be stored. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-a-product-variation).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+baseUrl:        "",
+consumerKey:    "",
+consumerSecret: "",
+}
+
+// Define body
+body := gowoocommerce.ProductVariationsBody{
+    Description:       "Our Version for Shopify.",
+    Permalink:         "",
+    Sku:               "",
+    Price:             "255",
+    RegularPrice:      "",
+    SalePrice:         "215",
+    DateOnSaleFrom:    nil,
+    DateOnSaleFromGmt: nil,
+    DateOnSaleTo:      nil,
+    DateOnSaleToGmt:   nil,
+    OnSale:            false,
+    Status:            "publish",
+    Purchasable:       false,
+    Virtual:           false,
+    Downloadable:      false,
+    Downloads:         nil,
+    DownloadLimit:     -1,
+    DownloadExpiry:    -1,
+    TaxStatus:         "taxable",
+    TaxClass:          "",
+    ManageStock:       false,
+    StockQuantity:     nil,
+    StockStatus:       "instock",
+    Backorders:        "no",
+    BackordersAllowed: false,
+    Backordered:       false,
+    Weight:            "",
+    Dimensions:        gowoocommerce.ProductVariationsBodyDimensions{},
+    ShippingClass:     "",
+    ShippingClassId:   0,
+    Image: gowoocommerce.ProductVariationsBodyImages{
+        Src:  "https://shop.jj-ideenschmiede.de/thumbnail/3e/81/e8/1621082068/jj-interface-shop_1920x1920.png",
+        Name: "J&J Interface",
+        Alt:  "J&J Interface",
+    },
+    Attributes: []gowoocommerce.ProductVariationsBodyAttributes{},
+    MenuOrder:  0,
+    MetaData:   nil,
+}
+
+// Add attribute
+body.Attributes = append(body.Attributes, gowoocommerce.ProductVariationsBodyAttributes{
+    Name:   "Shopsoftware",
+    Option: "WooCommerce",
+})
+
+// Update a variant to a product
+productVariations, err := gowoocommerce.UpdateProductVariations(33, 45, body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productVariations)
+}
+```
+
+## Delete a product variant
+
+If you want to remove a variant, you can do this with the following function. This requires a productID and a variantID. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#delete-a-product-variation).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+baseUrl:        "",
+consumerKey:    "",
+consumerSecret: "",
+}
+
+// Remove a variant from a product
+productVariations, err := gowoocommerce.DeleteProductVariations(33, 37, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productVariations)
+}
+```
+
 ## Product categories
 
 With the following function you can read out the stored categories. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-product-categories).
