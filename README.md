@@ -21,6 +21,99 @@ if err != nil {
 }
 ```
 
+## Create a product
+
+If you want to create a new product, you can do it as follows. For this, some data is mandatory. The function also returns the error codes from WooCommerce. 
+
+The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?python#create-a-product).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+baseUrl:        "",
+consumerKey:    "",
+consumerSecret: "",
+}
+
+// Define product body
+body := ProductsBody{
+    Name:              "J&J Interface",
+    Slug:              "jj-interface",
+    Type:              "simple",
+    Status:            "publish",
+    Featured:          false,
+    CatalogVisibility: "visible",
+    Description:       "<h1>J&J Interface</h1><p>Das ist eine Beschreibung.</p>",
+    ShortDescription:  "Unsere Schnittstelle zwischen Warenwirtschaft und Online Shop.",
+    Sku:               "",
+    Price:             "2800",
+    RegularPrice:      "3000",
+    SalePrice:         "",
+    DateOnSaleFrom:    nil,
+    DateOnSaleFromGmt: nil,
+    DateOnSaleTo:      nil,
+    DateOnSaleToGmt:   nil,
+    OnSale:            false,
+    Purchasable:       false,
+    TotalSales:        0,
+    Virtual:           false,
+    Downloadable:      false,
+    Downloads:         nil,
+    DownloadLimit:     -1,
+    DownloadExpiry:    -1,
+    ExternalUrl:       "",
+    ButtonText:        "",
+    TaxStatus:         "taxable",
+    TaxClass:          "",
+    ManageStock:       true,
+    StockQuantity:     120,
+    Backorders:        "no",
+    BackordersAllowed: false,
+    Backordered:       false,
+    LowStockAmount:    nil,
+    SoldIndividually:  false,
+    Weight:            "",
+    Dimensions:        ProductsBodyDimensions{},
+    ShippingRequired:  false,
+    ShippingTaxable:   false,
+    ShippingClass:     "",
+    ShippingClassId:   0,
+    ReviewsAllowed:    false,
+    AverageRating:     "",
+    RatingCount:       0,
+    UpsellIds:         nil,
+    CrossSellIds:      nil,
+    ParentId:          0,
+    PurchaseNote:      "",
+    Categories:        []ProductsBodyCategories{},
+    Tags:              nil,
+    Images:            []ProductsBodyImages{},
+    Attributes:        nil,
+    DefaultAttributes: nil,
+    Variations:        nil,
+    GroupedProducts:   nil,
+    MenuOrder:         0,
+    RelatedIds:        nil,
+    MetaData:          nil,
+    StockStatus:       "instock",
+}
+
+// Add an image
+body.Images = append(body.Images, ProductsBodyImages{
+    Src:  "https://shop.jj-ideenschmiede.de/media/3e/81/e8/1621082068/jj-interface-shop.png",
+    Name: "J&J Interface",
+    Alt:  "jj-interface",
+})
+
+// Create new product
+products, err := CreateProduct(body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(products)
+}
+```
+
 ## Delete a product
 
 If you want to remove a product, you need the ID of the product. This must be stored with the function. Also the value force must be answered with true or false. If this is true, then the product is permanently removed. If the value is answered with false, then the product ends up in the recycle bin for the time being.
