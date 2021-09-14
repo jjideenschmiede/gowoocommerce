@@ -25,7 +25,7 @@ if err != nil {
 
 If you want to create a new product, you can do it as follows. For this, some data is mandatory. The function also returns the error codes from WooCommerce. 
 
-The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?python#create-a-product).
+The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#create-a-product).
 
 ```go
 // Define the request
@@ -36,7 +36,98 @@ consumerSecret: "",
 }
 
 // Define product body
-body := ProductsBody{
+body := gowoocommerce.ProductsBody{
+    Name:              "J&J Interface V2",
+    Slug:              "jj-interface",
+    Type:              "simple",
+    Status:            "publish",
+    Featured:          false,
+    CatalogVisibility: "visible",
+    Description:       "<h1>J&J Interface</h1><p>Das ist eine Beschreibung.</p>",
+    ShortDescription:  "Unsere Schnittstelle zwischen Warenwirtschaft und Online Shop.",
+    Sku:               "",
+    Price:             "2800",
+    RegularPrice:      "3000",
+    SalePrice:         "",
+    DateOnSaleFrom:    nil,
+    DateOnSaleFromGmt: nil,
+    DateOnSaleTo:      nil,
+    DateOnSaleToGmt:   nil,
+    OnSale:            false,
+    Purchasable:       false,
+    TotalSales:        0,
+    Virtual:           false,
+    Downloadable:      false,
+    Downloads:         nil,
+    DownloadLimit:     -1,
+    DownloadExpiry:    -1,
+    ExternalUrl:       "",
+    ButtonText:        "",
+    TaxStatus:         "taxable",
+    TaxClass:          "",
+    ManageStock:       true,
+    StockQuantity:     120,
+    Backorders:        "no",
+    BackordersAllowed: false,
+    Backordered:       false,
+    LowStockAmount:    nil,
+    SoldIndividually:  false,
+    Weight:            "",
+    Dimensions:        gowoocommerce.ProductsBodyDimensions{},
+    ShippingRequired:  false,
+    ShippingTaxable:   false,
+    ShippingClass:     "",
+    ShippingClassId:   0,
+    ReviewsAllowed:    false,
+    AverageRating:     "",
+    RatingCount:       0,
+    UpsellIds:         nil,
+    CrossSellIds:      nil,
+    ParentId:          0,
+    PurchaseNote:      "",
+    Categories:        []gowoocommerce.ProductsBodyCategories{},
+    Tags:              nil,
+    Images:            []gowoocommerce.ProductsBodyImages{},
+    Attributes:        nil,
+    DefaultAttributes: nil,
+    Variations:        nil,
+    GroupedProducts:   nil,
+    MenuOrder:         0,
+    RelatedIds:        nil,
+    MetaData:          nil,
+    StockStatus:       "instock",
+}
+
+// Add an image
+body.Images = append(body.Images, gowoocommerce.ProductsBodyImages{
+    Src:  "https://shop.jj-ideenschmiede.de/media/3e/81/e8/1621082068/jj-interface-shop.png",
+    Name: "J&J Interface",
+    Alt:  "jj-interface",
+})
+
+// Create new product
+products, err := gowoocommerce.CreateProduct(body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(products)
+}
+```
+
+## Update a product
+
+If you want to update a product, it works like creating a product. With the difference that you need the ID of the product. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-a-product).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+baseUrl:        "",
+consumerKey:    "",
+consumerSecret: "",
+}
+
+// Define product body
+body := gowoocommerce.ProductsBody{
     Name:              "J&J Interface",
     Slug:              "jj-interface",
     Type:              "simple",
@@ -73,7 +164,7 @@ body := ProductsBody{
     LowStockAmount:    nil,
     SoldIndividually:  false,
     Weight:            "",
-    Dimensions:        ProductsBodyDimensions{},
+    Dimensions:        gowoocommerce.ProductsBodyDimensions{},
     ShippingRequired:  false,
     ShippingTaxable:   false,
     ShippingClass:     "",
@@ -85,9 +176,9 @@ body := ProductsBody{
     CrossSellIds:      nil,
     ParentId:          0,
     PurchaseNote:      "",
-    Categories:        []ProductsBodyCategories{},
+    Categories:        []gowoocommerce.ProductsBodyCategories{},
     Tags:              nil,
-    Images:            []ProductsBodyImages{},
+    Images:            []gowoocommerce.ProductsBodyImages{},
     Attributes:        nil,
     DefaultAttributes: nil,
     Variations:        nil,
@@ -99,14 +190,14 @@ body := ProductsBody{
 }
 
 // Add an image
-body.Images = append(body.Images, ProductsBodyImages{
+body.Images = append(body.Images, gowoocommerce.ProductsBodyImages{
     Src:  "https://shop.jj-ideenschmiede.de/media/3e/81/e8/1621082068/jj-interface-shop.png",
     Name: "J&J Interface",
     Alt:  "jj-interface",
 })
 
 // Create new product
-products, err := CreateProduct(body, r)
+products, err := gowoocommerce.UpdateProduct(22, body, r)
 if err != nil {
     fmt.Println(err)
 } else {
