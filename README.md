@@ -1,5 +1,49 @@
 # gowoocommerce
 
+## Products
+
+If you want to read out products, then you can do this via the following function. It is important that the page number is stored in the function. There are always 100 products loaded per page. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-products).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    baseUrl:        "",
+    consumerKey:    "",
+    consumerSecret: "",
+}
+
+// Get all products from the page
+products, err := gowoocommerce.Products(1, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(products)
+}
+```
+
+## Delete a product
+
+If you want to remove a product, you need the ID of the product. This must be stored with the function. Also the value force must be answered with true or false. If this is true, then the product is permanently removed. If the value is answered with false, then the product ends up in the recycle bin for the time being.
+
+The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#delete-a-product).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    baseUrl:        "",
+    consumerKey:    "",
+    consumerSecret: "",
+}
+
+// Delete a product
+products, err := DeleteProduct(17, false, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(products)
+}
+```
+
 ## Product categories
 
 With the following function you can read out the stored categories. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-product-categories).
