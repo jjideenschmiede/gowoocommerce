@@ -16,6 +16,87 @@ import (
 	"fmt"
 )
 
+// ProductsBody is to structure the request data
+type ProductsBody struct {
+	Name              string                   `json:"name"`
+	Slug              string                   `json:"slug"`
+	Type              string                   `json:"type"`
+	Status            string                   `json:"status"`
+	Featured          bool                     `json:"featured"`
+	CatalogVisibility string                   `json:"catalog_visibility"`
+	Description       string                   `json:"description"`
+	ShortDescription  string                   `json:"short_description"`
+	Sku               string                   `json:"sku"`
+	Price             string                   `json:"price"`
+	RegularPrice      string                   `json:"regular_price"`
+	SalePrice         string                   `json:"sale_price"`
+	DateOnSaleFrom    interface{}              `json:"date_on_sale_from"`
+	DateOnSaleFromGmt interface{}              `json:"date_on_sale_from_gmt"`
+	DateOnSaleTo      interface{}              `json:"date_on_sale_to"`
+	DateOnSaleToGmt   interface{}              `json:"date_on_sale_to_gmt"`
+	OnSale            bool                     `json:"on_sale"`
+	Purchasable       bool                     `json:"purchasable"`
+	TotalSales        int                      `json:"total_sales"`
+	Virtual           bool                     `json:"virtual"`
+	Downloadable      bool                     `json:"downloadable"`
+	Downloads         []interface{}            `json:"downloads"`
+	DownloadLimit     int                      `json:"download_limit"`
+	DownloadExpiry    int                      `json:"download_expiry"`
+	ExternalUrl       string                   `json:"external_url"`
+	ButtonText        string                   `json:"button_text"`
+	TaxStatus         string                   `json:"tax_status"`
+	TaxClass          string                   `json:"tax_class"`
+	ManageStock       bool                     `json:"manage_stock"`
+	StockQuantity     interface{}              `json:"stock_quantity"`
+	Backorders        string                   `json:"backorders"`
+	BackordersAllowed bool                     `json:"backorders_allowed"`
+	Backordered       bool                     `json:"backordered"`
+	LowStockAmount    interface{}              `json:"low_stock_amount"`
+	SoldIndividually  bool                     `json:"sold_individually"`
+	Weight            string                   `json:"weight"`
+	Dimensions        ProductsBodyDimensions   `json:"dimensions"`
+	ShippingRequired  bool                     `json:"shipping_required"`
+	ShippingTaxable   bool                     `json:"shipping_taxable"`
+	ShippingClass     string                   `json:"shipping_class"`
+	ShippingClassId   int                      `json:"shipping_class_id"`
+	ReviewsAllowed    bool                     `json:"reviews_allowed"`
+	AverageRating     string                   `json:"average_rating"`
+	RatingCount       int                      `json:"rating_count"`
+	UpsellIds         []interface{}            `json:"upsell_ids"`
+	CrossSellIds      []interface{}            `json:"cross_sell_ids"`
+	ParentId          int                      `json:"parent_id"`
+	PurchaseNote      string                   `json:"purchase_note"`
+	Categories        []ProductsBodyCategories `json:"categories"`
+	Tags              []interface{}            `json:"tags"`
+	Images            []ProductsBodyImages     `json:"images"`
+	Attributes        []interface{}            `json:"attributes"`
+	DefaultAttributes []interface{}            `json:"default_attributes"`
+	Variations        []interface{}            `json:"variations"`
+	GroupedProducts   []interface{}            `json:"grouped_products"`
+	MenuOrder         int                      `json:"menu_order"`
+	RelatedIds        []interface{}            `json:"related_ids"`
+	MetaData          []interface{}            `json:"meta_data"`
+	StockStatus       string                   `json:"stock_status"`
+}
+
+type ProductsBodyDimensions struct {
+	Length string `json:"length"`
+	Width  string `json:"width"`
+	Height string `json:"height"`
+}
+
+type ProductsBodyCategories struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+	Slug string `json:"slug"`
+}
+
+type ProductsBodyImages struct {
+	Src  string `json:"src"`
+	Name string `json:"name"`
+	Alt  string `json:"alt"`
+}
+
 // ProductsReturn is to decode the product return
 type ProductsReturn struct {
 	Id                int           `json:"id"`
@@ -100,6 +181,21 @@ type ProductsReturn struct {
 			Href string `json:"href"`
 		} `json:"collection"`
 	} `json:"_links"`
+	Code    string `json:"code,omitempty"`
+	Message string `json:"message,omitempty"`
+	Data    struct {
+		Status int `json:"status"`
+		Params struct {
+			Backorders string `json:"backorders"`
+		} `json:"params"`
+		Details struct {
+			Backorders struct {
+				Code    string      `json:"code"`
+				Message string      `json:"message"`
+				Data    interface{} `json:"data"`
+			} `json:"backorders"`
+		} `json:"details"`
+	} `json:"data,omitempty"`
 }
 
 // Products are to get a list of all products per page
@@ -123,6 +219,40 @@ func Products(page int, r *Request) ([]ProductsReturn, error) {
 	err = json.NewDecoder(response.Body).Decode(&decode)
 	if err != nil {
 		return nil, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
+// CreateProduct is to create a new product
+func CreateProduct(body ProductsBody, r *Request) (ProductsReturn, error) {
+
+	// Convert body
+	convert, err := json.Marshal(body)
+	if err != nil {
+		return ProductsReturn{}, err
+	}
+
+	// Set config for new request
+	c := Config{"/wp-json/wc/v3/products", "POST", convert}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return ProductsReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode ProductsReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return ProductsReturn{}, err
 	}
 
 	// Return data
