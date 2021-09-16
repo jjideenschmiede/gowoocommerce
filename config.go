@@ -24,14 +24,14 @@ type Config struct {
 
 // Request is to define the request data
 type Request struct {
-	baseUrl, consumerKey, consumerSecret string
+	BaseUrl, ConsumerKey, ConsumerSecret string
 }
 
 // Send is to send a new request
 func (c *Config) Send(r *Request) (*http.Response, error) {
 
 	// Set url
-	url := r.baseUrl + c.Path
+	url := r.BaseUrl + c.Path
 
 	// Define client
 	client := &http.Client{}
@@ -48,8 +48,8 @@ func (c *Config) Send(r *Request) (*http.Response, error) {
 	// Define url parameter
 	parameter := request.URL.Query()
 
-	parameter.Add("consumer_key", r.consumerKey)
-	parameter.Add("consumer_secret", r.consumerSecret)
+	parameter.Add("consumer_key", r.ConsumerKey)
+	parameter.Add("consumer_secret", r.ConsumerSecret)
 
 	// Set new url
 	request.URL.RawQuery = parameter.Encode()
