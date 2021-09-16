@@ -361,6 +361,64 @@ if err != nil {
 }
 ```
 
+### Create an attribute term
+
+If you want to assign a new term to an attribute, you can do this as follows. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#create-an-attribute-term).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Define body
+body := gowoocommerce.ProductAttributeTermBody{
+    Name:        "XXL",
+    Slug:        "xxl",
+    Description: "Ich bin eine Beschreibung.",
+    MenuOrder:   0,
+}
+
+// Create a new term
+productAttributeTerms, err := gowoocommerce.CreateProductAttributeTerms(3, body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productAttributeTerms)
+}
+```
+
+### Update an attribute term
+
+If you want to update a term, you can do this as follows. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-an-attribute-term).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Define body
+body := gowoocommerce.ProductAttributeTermBody{
+    Name:        "XXS",
+    Slug:        "xxs",
+    Description: "Ich bin eine neue Beschreibung.",
+    MenuOrder:   0,
+}
+
+// Update a term
+productAttributeTerms, err := gowoocommerce.UpdateProductAttributeTerms(3, 23, body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productAttributeTerms)
+}
+```
+
 ### Delete an attribute term
 
 If you want to remove a term, then you need the ID of the attribute and the ID of the term. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#delete-an-attribute-term).
@@ -374,7 +432,7 @@ r := &gowoocommerce.Request{
 }
 
 // Delete a product attribute term
-productAttributeTerms, err := DeleteProductAttributeTerms(3, 20, true, r)
+productAttributeTerms, err := gowoocommerce.DeleteProductAttributeTerms(3, 20, true, r)
 if err != nil {
     fmt.Println(err)
 } else {
