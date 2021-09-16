@@ -17,9 +17,9 @@ If you want to read out products, then you can do this via the following functio
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-    baseUrl:        "",
-    consumerKey:    "",
-    consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Get all products from the page
@@ -40,9 +40,9 @@ The description of the API endpoint can be found [here](https://woocommerce.gith
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-baseUrl:        "",
-consumerKey:    "",
-consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Define product body
@@ -131,9 +131,9 @@ If you want to update a product, it works like creating a product. With the diff
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-baseUrl:        "",
-consumerKey:    "",
-consumerSecret: "",
+BaseUrl:        "",
+ConsumerKey:    "",
+ConsumerSecret: "",
 }
 
 // Define product body
@@ -224,9 +224,9 @@ The description of the API endpoint can be found [here](https://woocommerce.gith
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-    baseUrl:        "",
-    consumerKey:    "",
-    consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Delete a product
@@ -238,6 +238,27 @@ if err != nil {
 }
 ```
 
+### Product attributes
+
+With this function you can read out all product attributes. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#create-a-product-attribute).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Read all product attributes
+productAttributes, err := gowoocommerce.ProductAttributes(33, 1, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productAttributes)
+}
+```
+
 ### Product variations
 
 If you want to read out all variants for a product, you can do this as follows. The ID of the variant product is required. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-product-variations).
@@ -245,9 +266,9 @@ If you want to read out all variants for a product, you can do this as follows. 
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-    baseUrl:        "",
-    consumerKey:    "",
-    consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Read all product variations
@@ -266,9 +287,9 @@ If you want to create a new variant, you can do so using this function. Thereby 
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-baseUrl:        "",
-consumerKey:    "",
-consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Define body
@@ -335,9 +356,9 @@ If you want to update a variant, you can do this as follows. Everything is the s
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-baseUrl:        "",
-consumerKey:    "",
-consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Define body
@@ -404,9 +425,9 @@ If you want to remove a variant, you can do this with the following function. Th
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-baseUrl:        "",
-consumerKey:    "",
-consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Remove a variant from a product
@@ -425,9 +446,9 @@ With the following function you can read out the stored categories. The descript
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-    baseUrl:        "",
-    consumerKey:    "",
-    consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Get all product categories
@@ -446,9 +467,9 @@ With the following function you can add the new categories. The description of t
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-    baseUrl:        "",
-    consumerKey:    "",
-    consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Define body data
@@ -479,9 +500,9 @@ If you want to renew an existing product category, then this actually works like
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-    baseUrl:        "",
-    consumerKey:    "",
-    consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 
@@ -513,9 +534,9 @@ To delete a category, only the ID of the category is needed. You can use this fu
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-    baseUrl:        "",
-    consumerKey:    "",
-    consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Remove a product categories
@@ -534,9 +555,9 @@ If you want to read out all orders, you can do it page by page using the followi
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-    baseUrl:        "",
-    consumerKey:    "",
-    consumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Get all orders from the page
