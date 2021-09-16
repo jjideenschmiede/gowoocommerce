@@ -353,7 +353,28 @@ r := &gowoocommerce.Request{
 }
 
 // Read all attribute terms
-productAttributeTerms, err := ProductAttributeTerms(3, r)
+productAttributeTerms, err := gowoocommerce.ProductAttributeTerms(3, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productAttributeTerms)
+}
+```
+
+### Delete an attribute term
+
+If you want to remove a term, then you need the ID of the attribute and the ID of the term. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#delete-an-attribute-term).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Delete a product attribute term
+productAttributeTerms, err := DeleteProductAttributeTerms(3, 20, true, r)
 if err != nil {
     fmt.Println(err)
 } else {
