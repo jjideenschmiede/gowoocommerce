@@ -61,3 +61,31 @@ func ProductAttributeTerms(attributeId int, r *Request) ([]ProductAttributeTerms
 	return decode, err
 
 }
+
+// DeleteProductAttributeTerms is to delete a term
+func DeleteProductAttributeTerms(attributeId, termId int, force bool, r *Request) (ProductAttributeTermsReturn, error) {
+
+	// Set config for new request
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/attributes/%d/terms/%d?force=%t", attributeId, termId, force), "DELETE", nil}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return ProductAttributeTermsReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode ProductAttributeTermsReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return ProductAttributeTermsReturn{}, err
+	}
+
+	// Return data
+	return decode, err
+
+}
