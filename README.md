@@ -340,6 +340,27 @@ if err != nil {
 }
 ```
 
+### List all attribute terms
+
+If you want to read the attribute terms, you can do it as follows. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-attribute-terms).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Read all attribute terms
+productAttributeTerms, err := ProductAttributeTerms(3, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productAttributeTerms)
+}
+```
+
 ### Product variations
 
 If you want to read out all variants for a product, you can do this as follows. The ID of the variant product is required. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-product-variations).
