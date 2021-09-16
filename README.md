@@ -251,7 +251,88 @@ r := &gowoocommerce.Request{
 }
 
 // Read all product attributes
-productAttributes, err := gowoocommerce.ProductAttributes(33, 1, r)
+productAttributes, err := gowoocommerce.ProductAttributes(r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productAttributes)
+}
+```
+
+### Create a product attribute
+
+If you want to add an attribute, you can do it with the following function. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#create-a-product-attribute).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Define attributes body
+body := gowoocommerce.ProductAttributesBody{
+    Name:        "Schuhgröße",
+    Slug:        "schuhgroesse",
+    Type:        "select",
+    OrderBy:     "menu_order",
+    HasArchives: true,
+}
+
+// Create new product
+productAttributes, err := gowoocommerce.CreateProductAttributes(body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productAttributes)
+}
+```
+
+### Update a product attribute
+
+If an attribute is to be updated, this is done with the following function. It is important that the ID of the attribute is specified. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-a-product-attribute).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Define attributes body
+body := gowoocommerce.ProductAttributesBody{
+    Name:        "Schuhgröße V2",
+    Slug:        "schuhgroesse",
+    Type:        "select",
+    OrderBy:     "menu_order",
+    HasArchives: true,
+}
+
+// Create new product
+productAttributes, err := gowoocommerce.UpdateProductAttributes(1, body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productAttributes)
+}
+```
+
+### Delete a product attribute
+
+If you want to remove an attribute, you can do so with this function. The ID of the attribute to be deleted is required. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#delete-a-product-attribute).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Delete a product attributes
+productAttributes, err := gowoocommerce.DeleteProductAttributes(1, r)
 if err != nil {
     fmt.Println(err)
 } else {
