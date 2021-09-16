@@ -1,6 +1,16 @@
 # gowoocommerce
 
-## Products
+With this library it is possible to call the Woocommerce v3 api with functions. We extend this library according to our needs. We are looking forward to more hardworking hands.
+
+## Install
+
+```console
+go get github.com/jjideenschmiede/gowoocommerce
+```
+
+## How to use?
+
+### Products
 
 If you want to read out products, then you can do this via the following function. It is important that the page number is stored in the function. There are always 100 products loaded per page. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-products).
 
@@ -21,7 +31,7 @@ if err != nil {
 }
 ```
 
-## Create a product
+### Create a product
 
 If you want to create a new product, you can do it as follows. For this, some data is mandatory. The function also returns the error codes from WooCommerce. 
 
@@ -114,7 +124,7 @@ if err != nil {
 }
 ```
 
-## Update a product
+### Update a product
 
 If you want to update a product, it works like creating a product. With the difference that you need the ID of the product. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-a-product).
 
@@ -205,7 +215,7 @@ if err != nil {
 }
 ```
 
-## Delete a product
+### Delete a product
 
 If you want to remove a product, you need the ID of the product. This must be stored with the function. Also the value force must be answered with true or false. If this is true, then the product is permanently removed. If the value is answered with false, then the product ends up in the recycle bin for the time being.
 
@@ -228,7 +238,7 @@ if err != nil {
 }
 ```
 
-## Product variations
+### Product variations
 
 If you want to read out all variants for a product, you can do this as follows. The ID of the variant product is required. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-product-variations).
 
@@ -249,7 +259,7 @@ if err != nil {
 }
 ```
 
-## Create a product variant
+### Create a product variant
 
 If you want to create a new variant, you can do so using this function. Thereby some values are needed. The library returns these as values if they should occur. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#create-a-product-variation).
 
@@ -318,7 +328,7 @@ if err != nil {
 }
 ```
 
-## Update a product variant
+### Update a product variant
 
 If you want to update a variant, you can do this as follows. Everything is the same as when you create a variant. Only the ID of the variant must be stored. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-a-product-variation).
 
@@ -387,7 +397,7 @@ if err != nil {
 }
 ```
 
-## Delete a product variant
+### Delete a product variant
 
 If you want to remove a variant, you can do this with the following function. This requires a productID and a variantID. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#delete-a-product-variation).
 
@@ -408,7 +418,7 @@ if err != nil {
 }
 ```
 
-## Product categories
+### Product categories
 
 With the following function you can read out the stored categories. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-product-categories).
 
@@ -429,7 +439,7 @@ if err != nil {
 }
 ```
 
-## Add product category
+### Add product category
 
 With the following function you can add the new categories. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#create-a-product-category).
 
@@ -462,7 +472,7 @@ if err != nil {
 }
 ```
 
-## Update a product category
+### Update a product category
 
 If you want to renew an existing product category, then this actually works like creating a new category. In the function, however, the ID of the category must be specified. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-a-product-category).
 
@@ -496,7 +506,7 @@ if err != nil {
 }
 ```
 
-## Delete a product category
+### Delete a product category
 
 To delete a category, only the ID of the category is needed. You can use this function to remove the category. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#delete-a-product-category).
 
@@ -517,7 +527,7 @@ if err != nil {
 }
 ```
 
-## Read all orders
+### Read all orders
 
 If you want to read out all orders, you can do it page by page using the following function. 100 orders are always read out at once. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#orders).
 
