@@ -18,183 +18,183 @@ import (
 
 // ProductsBody is to structure the request data
 type ProductsBody struct {
-	Name              string                   `json:"name,omitempty"`
-	Slug              string                   `json:"slug,omitempty"`
-	Type              string                   `json:"type,omitempty"`
-	Status            string                   `json:"status,omitempty"`
-	Featured          bool                     `json:"featured,omitempty"`
-	CatalogVisibility string                   `json:"catalog_visibility,omitempty"`
-	Description       string                   `json:"description,omitempty"`
-	ShortDescription  string                   `json:"short_description,omitempty"`
-	Sku               string                   `json:"sku,omitempty"`
-	Price             string                   `json:"price,omitempty"`
-	RegularPrice      string                   `json:"regular_price,omitempty"`
-	SalePrice         string                   `json:"sale_price,omitempty"`
-	DateOnSaleFrom    interface{}              `json:"date_on_sale_from,omitempty"`
-	DateOnSaleFromGmt interface{}              `json:"date_on_sale_from_gmt,omitempty"`
-	DateOnSaleTo      interface{}              `json:"date_on_sale_to,omitempty"`
-	DateOnSaleToGmt   interface{}              `json:"date_on_sale_to_gmt,omitempty"`
-	OnSale            bool                     `json:"on_sale,omitempty"`
-	Purchasable       bool                     `json:"purchasable,omitempty"`
-	TotalSales        int                      `json:"total_sales,omitempty"`
-	Virtual           bool                     `json:"virtual,omitempty"`
-	Downloadable      bool                     `json:"downloadable,omitempty"`
-	Downloads         []interface{}            `json:"downloads,omitempty"`
-	DownloadLimit     int                      `json:"download_limit,omitempty"`
-	DownloadExpiry    int                      `json:"download_expiry,omitempty"`
-	ExternalUrl       string                   `json:"external_url,omitempty"`
-	ButtonText        string                   `json:"button_text,omitempty"`
-	TaxStatus         string                   `json:"tax_status,omitempty"`
-	TaxClass          string                   `json:"tax_class,omitempty"`
-	ManageStock       bool                     `json:"manage_stock,omitempty"`
-	StockQuantity     interface{}              `json:"stock_quantity,omitempty"`
-	Backorders        string                   `json:"backorders,omitempty"`
-	BackordersAllowed bool                     `json:"backorders_allowed,omitempty"`
-	Backordered       bool                     `json:"backordered,omitempty"`
-	LowStockAmount    interface{}              `json:"low_stock_amount,omitempty"`
-	SoldIndividually  bool                     `json:"sold_individually,omitempty"`
-	Weight            string                   `json:"weight,omitempty"`
-	Dimensions        ProductsBodyDimensions   `json:"dimensions,omitempty"`
-	ShippingRequired  bool                     `json:"shipping_required,omitempty"`
-	ShippingTaxable   bool                     `json:"shipping_taxable,omitempty"`
-	ShippingClass     string                   `json:"shipping_class,omitempty"`
-	ShippingClassId   int                      `json:"shipping_class_id,omitempty"`
-	ReviewsAllowed    bool                     `json:"reviews_allowed,omitempty"`
-	AverageRating     string                   `json:"average_rating,omitempty"`
-	RatingCount       int                      `json:"rating_count,omitempty"`
-	UpsellIds         []interface{}            `json:"upsell_ids,omitempty"`
-	CrossSellIds      []interface{}            `json:"cross_sell_ids,omitempty"`
-	ParentId          int                      `json:"parent_id,omitempty"`
-	PurchaseNote      string                   `json:"purchase_note,omitempty"`
-	Categories        []ProductsBodyCategories `json:"categories,omitempty"`
-	Tags              []interface{}            `json:"tags,omitempty"`
-	Images            []ProductsBodyImages     `json:"images,omitempty"`
-	Attributes        []interface{}            `json:"attributes,omitempty"`
-	DefaultAttributes []interface{}            `json:"default_attributes,omitempty"`
-	Variations        []interface{}            `json:"variations,omitempty"`
-	GroupedProducts   []interface{}            `json:"grouped_products,omitempty"`
-	MenuOrder         int                      `json:"menu_order,omitempty"`
-	RelatedIds        []interface{}            `json:"related_ids,omitempty"`
-	MetaData          []interface{}            `json:"meta_data,omitempty"`
-	StockStatus       string                   `json:"stock_status,omitempty"`
+	Name              string                   `json:"name"`
+	Slug              string                   `json:"slug"`
+	Type              string                   `json:"type"`
+	Status            string                   `json:"status"`
+	Featured          bool                     `json:"featured"`
+	CatalogVisibility string                   `json:"catalog_visibility"`
+	Description       string                   `json:"description"`
+	ShortDescription  string                   `json:"short_description"`
+	Sku               string                   `json:"sku"`
+	Price             string                   `json:"price"`
+	RegularPrice      string                   `json:"regular_price"`
+	SalePrice         string                   `json:"sale_price"`
+	DateOnSaleFrom    interface{}              `json:"date_on_sale_from"`
+	DateOnSaleFromGmt interface{}              `json:"date_on_sale_from_gmt"`
+	DateOnSaleTo      interface{}              `json:"date_on_sale_to"`
+	DateOnSaleToGmt   interface{}              `json:"date_on_sale_to_gmt"`
+	OnSale            bool                     `json:"on_sale"`
+	Purchasable       bool                     `json:"purchasable"`
+	TotalSales        int                      `json:"total_sales"`
+	Virtual           bool                     `json:"virtual"`
+	Downloadable      bool                     `json:"downloadable"`
+	Downloads         []interface{}            `json:"downloads"`
+	DownloadLimit     int                      `json:"download_limit"`
+	DownloadExpiry    int                      `json:"download_expiry"`
+	ExternalUrl       string                   `json:"external_url"`
+	ButtonText        string                   `json:"button_text"`
+	TaxStatus         string                   `json:"tax_status"`
+	TaxClass          string                   `json:"tax_class"`
+	ManageStock       bool                     `json:"manage_stock"`
+	StockQuantity     interface{}              `json:"stock_quantity"`
+	Backorders        string                   `json:"backorders"`
+	BackordersAllowed bool                     `json:"backorders_allowed"`
+	Backordered       bool                     `json:"backordered"`
+	LowStockAmount    interface{}              `json:"low_stock_amount"`
+	SoldIndividually  bool                     `json:"sold_individually"`
+	Weight            string                   `json:"weight"`
+	Dimensions        ProductsBodyDimensions   `json:"dimensions"`
+	ShippingRequired  bool                     `json:"shipping_required"`
+	ShippingTaxable   bool                     `json:"shipping_taxable"`
+	ShippingClass     string                   `json:"shipping_class"`
+	ShippingClassId   int                      `json:"shipping_class_id"`
+	ReviewsAllowed    bool                     `json:"reviews_allowed"`
+	AverageRating     string                   `json:"average_rating"`
+	RatingCount       int                      `json:"rating_count"`
+	UpsellIds         []interface{}            `json:"upsell_ids"`
+	CrossSellIds      []interface{}            `json:"cross_sell_ids"`
+	ParentId          int                      `json:"parent_id"`
+	PurchaseNote      string                   `json:"purchase_note"`
+	Categories        []ProductsBodyCategories `json:"categories"`
+	Tags              []interface{}            `json:"tags"`
+	Images            []ProductsBodyImages     `json:"images"`
+	Attributes        []interface{}            `json:"attributes"`
+	DefaultAttributes []interface{}            `json:"default_attributes"`
+	Variations        []interface{}            `json:"variations"`
+	GroupedProducts   []interface{}            `json:"grouped_products"`
+	MenuOrder         int                      `json:"menu_order"`
+	RelatedIds        []interface{}            `json:"related_ids"`
+	MetaData          []interface{}            `json:"meta_data"`
+	StockStatus       string                   `json:"stock_status"`
 }
 
 type ProductsBodyDimensions struct {
-	Length string `json:"length,omitempty"`
-	Width  string `json:"width,omitempty"`
-	Height string `json:"height,omitempty"`
+	Length string `json:"length"`
+	Width  string `json:"width"`
+	Height string `json:"height"`
 }
 
 type ProductsBodyCategories struct {
-	Id   int    `json:"id,omitempty"`
-	Name string `json:"name,omitempty"`
-	Slug string `json:"slug,omitempty"`
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+	Slug string `json:"slug"`
 }
 
 type ProductsBodyImages struct {
-	Src  string `json:"src,omitempty"`
-	Name string `json:"name,omitempty"`
-	Alt  string `json:"alt,omitempty"`
+	Src  string `json:"src"`
+	Name string `json:"name"`
+	Alt  string `json:"alt"`
 }
 
 // ProductsReturn is to decode the product return
 type ProductsReturn struct {
-	Id                int           `json:"id,omitempty"`
-	Name              string        `json:"name,omitempty"`
-	Slug              string        `json:"slug,omitempty"`
-	Permalink         string        `json:"permalink,omitempty"`
-	DateCreated       string        `json:"date_created,omitempty"`
-	DateCreatedGmt    string        `json:"date_created_gmt,omitempty"`
-	DateModified      string        `json:"date_modified,omitempty"`
-	DateModifiedGmt   string        `json:"date_modified_gmt,omitempty"`
-	Type              string        `json:"type,omitempty"`
-	Status            string        `json:"status,omitempty"`
-	Featured          bool          `json:"featured,omitempty"`
-	CatalogVisibility string        `json:"catalog_visibility,omitempty"`
-	Description       string        `json:"description,omitempty"`
-	ShortDescription  string        `json:"short_description,omitempty"`
-	Sku               string        `json:"sku,omitempty"`
-	Price             string        `json:"price,omitempty"`
-	RegularPrice      string        `json:"regular_price,omitempty"`
-	SalePrice         string        `json:"sale_price,omitempty"`
-	DateOnSaleFrom    interface{}   `json:"date_on_sale_from,omitempty"`
-	DateOnSaleFromGmt interface{}   `json:"date_on_sale_from_gmt,omitempty"`
-	DateOnSaleTo      interface{}   `json:"date_on_sale_to,omitempty"`
-	DateOnSaleToGmt   interface{}   `json:"date_on_sale_to_gmt,omitempty"`
-	OnSale            bool          `json:"on_sale,omitempty"`
-	Purchasable       bool          `json:"purchasable,omitempty"`
-	TotalSales        int           `json:"total_sales,omitempty"`
-	Virtual           bool          `json:"virtual,omitempty"`
-	Downloadable      bool          `json:"downloadable,omitempty"`
-	Downloads         []interface{} `json:"downloads,omitempty"`
-	DownloadLimit     int           `json:"download_limit,omitempty"`
-	DownloadExpiry    int           `json:"download_expiry,omitempty"`
-	ExternalUrl       string        `json:"external_url,omitempty"`
-	ButtonText        string        `json:"button_text,omitempty"`
-	TaxStatus         string        `json:"tax_status,omitempty"`
-	TaxClass          string        `json:"tax_class,omitempty"`
-	ManageStock       bool          `json:"manage_stock,omitempty"`
-	StockQuantity     interface{}   `json:"stock_quantity,omitempty"`
-	Backorders        string        `json:"backorders,omitempty"`
-	BackordersAllowed bool          `json:"backorders_allowed,omitempty"`
-	Backordered       bool          `json:"backordered,omitempty"`
-	LowStockAmount    interface{}   `json:"low_stock_amount,omitempty"`
-	SoldIndividually  bool          `json:"sold_individually,omitempty"`
-	Weight            string        `json:"weight,omitempty"`
+	Id                int           `json:"id"`
+	Name              string        `json:"name"`
+	Slug              string        `json:"slug"`
+	Permalink         string        `json:"permalink"`
+	DateCreated       string        `json:"date_created"`
+	DateCreatedGmt    string        `json:"date_created_gmt"`
+	DateModified      string        `json:"date_modified"`
+	DateModifiedGmt   string        `json:"date_modified_gmt"`
+	Type              string        `json:"type"`
+	Status            string        `json:"status"`
+	Featured          bool          `json:"featured"`
+	CatalogVisibility string        `json:"catalog_visibility"`
+	Description       string        `json:"description"`
+	ShortDescription  string        `json:"short_description"`
+	Sku               string        `json:"sku"`
+	Price             string        `json:"price"`
+	RegularPrice      string        `json:"regular_price"`
+	SalePrice         string        `json:"sale_price"`
+	DateOnSaleFrom    interface{}   `json:"date_on_sale_from"`
+	DateOnSaleFromGmt interface{}   `json:"date_on_sale_from_gmt"`
+	DateOnSaleTo      interface{}   `json:"date_on_sale_to"`
+	DateOnSaleToGmt   interface{}   `json:"date_on_sale_to_gmt"`
+	OnSale            bool          `json:"on_sale"`
+	Purchasable       bool          `json:"purchasable"`
+	TotalSales        int           `json:"total_sales"`
+	Virtual           bool          `json:"virtual"`
+	Downloadable      bool          `json:"downloadable"`
+	Downloads         []interface{} `json:"downloads"`
+	DownloadLimit     int           `json:"download_limit"`
+	DownloadExpiry    int           `json:"download_expiry"`
+	ExternalUrl       string        `json:"external_url"`
+	ButtonText        string        `json:"button_text"`
+	TaxStatus         string        `json:"tax_status"`
+	TaxClass          string        `json:"tax_class"`
+	ManageStock       bool          `json:"manage_stock"`
+	StockQuantity     interface{}   `json:"stock_quantity"`
+	Backorders        string        `json:"backorders"`
+	BackordersAllowed bool          `json:"backorders_allowed"`
+	Backordered       bool          `json:"backordered"`
+	LowStockAmount    interface{}   `json:"low_stock_amount"`
+	SoldIndividually  bool          `json:"sold_individually"`
+	Weight            string        `json:"weight"`
 	Dimensions        struct {
-		Length string `json:"length,omitempty"`
-		Width  string `json:"width,omitempty"`
-		Height string `json:"height,omitempty"`
-	} `json:"dimensions,omitempty"`
-	ShippingRequired bool          `json:"shipping_required,omitempty"`
-	ShippingTaxable  bool          `json:"shipping_taxable,omitempty"`
-	ShippingClass    string        `json:"shipping_class,omitempty"`
-	ShippingClassId  int           `json:"shipping_class_id,omitempty"`
-	ReviewsAllowed   bool          `json:"reviews_allowed,omitempty"`
-	AverageRating    string        `json:"average_rating,omitempty"`
-	RatingCount      int           `json:"rating_count,omitempty"`
-	UpsellIds        []interface{} `json:"upsell_ids,omitempty"`
-	CrossSellIds     []interface{} `json:"cross_sell_ids,omitempty"`
-	ParentId         int           `json:"parent_id,omitempty"`
-	PurchaseNote     string        `json:"purchase_note,omitempty"`
+		Length string `json:"length"`
+		Width  string `json:"width"`
+		Height string `json:"height"`
+	} `json:"dimensions"`
+	ShippingRequired bool          `json:"shipping_required"`
+	ShippingTaxable  bool          `json:"shipping_taxable"`
+	ShippingClass    string        `json:"shipping_class"`
+	ShippingClassId  int           `json:"shipping_class_id"`
+	ReviewsAllowed   bool          `json:"reviews_allowed"`
+	AverageRating    string        `json:"average_rating"`
+	RatingCount      int           `json:"rating_count"`
+	UpsellIds        []interface{} `json:"upsell_ids"`
+	CrossSellIds     []interface{} `json:"cross_sell_ids"`
+	ParentId         int           `json:"parent_id"`
+	PurchaseNote     string        `json:"purchase_note"`
 	Categories       []struct {
-		Id   int    `json:"id,omitempty"`
-		Name string `json:"name,omitempty"`
-		Slug string `json:"slug,omitempty"`
-	} `json:"categories,omitempty"`
-	Tags              []interface{} `json:"tags,omitempty"`
-	Images            []interface{} `json:"images,omitempty"`
-	Attributes        []interface{} `json:"attributes,omitempty"`
-	DefaultAttributes []interface{} `json:"default_attributes,omitempty"`
-	Variations        []interface{} `json:"variations,omitempty"`
-	GroupedProducts   []interface{} `json:"grouped_products,omitempty"`
-	MenuOrder         int           `json:"menu_order,omitempty"`
-	PriceHtml         string        `json:"price_html,omitempty"`
-	RelatedIds        []interface{} `json:"related_ids,omitempty"`
-	MetaData          []interface{} `json:"meta_data,omitempty"`
-	StockStatus       string        `json:"stock_status,omitempty"`
+		Id   int    `json:"id"`
+		Name string `json:"name"`
+		Slug string `json:"slug"`
+	} `json:"categories"`
+	Tags              []interface{} `json:"tags"`
+	Images            []interface{} `json:"images"`
+	Attributes        []interface{} `json:"attributes"`
+	DefaultAttributes []interface{} `json:"default_attributes"`
+	Variations        []interface{} `json:"variations"`
+	GroupedProducts   []interface{} `json:"grouped_products"`
+	MenuOrder         int           `json:"menu_order"`
+	PriceHtml         string        `json:"price_html"`
+	RelatedIds        []interface{} `json:"related_ids"`
+	MetaData          []interface{} `json:"meta_data"`
+	StockStatus       string        `json:"stock_status"`
 	Links             struct {
 		Self []struct {
-			Href string `json:"href,omitempty"`
-		} `json:"self,omitempty"`
+			Href string `json:"href"`
+		} `json:"self"`
 		Collection []struct {
-			Href string `json:"href,omitempty"`
-		} `json:"collection,omitempty"`
-	} `json:"_links,omitempty"`
+			Href string `json:"href"`
+		} `json:"collection"`
+	} `json:"_links"`
 	Code    string `json:"code,omitempty"`
 	Message string `json:"message,omitempty"`
 	Data    struct {
-		Status int `json:"status,omitempty"`
+		Status int `json:"status"`
 		Params struct {
-			Backorders string `json:"backorders,omitempty"`
-		} `json:"params,omitempty"`
+			Backorders string `json:"backorders"`
+		} `json:"params"`
 		Details struct {
 			Backorders struct {
-				Code    string      `json:"code,omitempty"`
-				Message string      `json:"message,omitempty"`
-				Data    interface{} `json:"data,omitempty"`
-			} `json:"backorders,omitempty"`
-		} `json:"details,omitempty"`
+				Code    string      `json:"code"`
+				Message string      `json:"message"`
+				Data    interface{} `json:"data"`
+			} `json:"backorders"`
+		} `json:"details"`
 	} `json:"data,omitempty"`
 }
 
