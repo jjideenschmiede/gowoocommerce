@@ -69,7 +69,7 @@ type ProductsBody struct {
 	Categories        []ProductsBodyCategories `json:"categories,omitempty"`
 	Tags              []interface{}            `json:"tags,omitempty"`
 	Images            []ProductsBodyImages     `json:"images,omitempty"`
-	Attributes        []ProductsBodyAttributes{}            `json:"attributes,omitempty"`
+	Attributes        []ProductsBodyAttributes `json:"attributes,omitempty"`
 	DefaultAttributes []interface{}            `json:"default_attributes,omitempty"`
 	Variations        []interface{}            `json:"variations,omitempty"`
 	GroupedProducts   []interface{}            `json:"grouped_products,omitempty"`
@@ -98,11 +98,11 @@ type ProductsBodyImages struct {
 }
 
 type ProductsBodyAttributes struct {
-	Name string `json:"name"`
-	Position int `json:"position"`
-	Visible bool `json:"visible"`
-	Variation bool `json:"variation"`
-	Options []string `json:"options"`
+	Name      string   `json:"name"`
+	Position  int      `json:"position"`
+	Visible   bool     `json:"visible"`
+	Variation bool     `json:"variation"`
+	Options   []string `json:"options"`
 }
 
 // ProductsReturn is to decode the product return
