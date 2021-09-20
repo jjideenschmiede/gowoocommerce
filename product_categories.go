@@ -18,16 +18,16 @@ import (
 
 // ProductCategory is to structure the category data
 type ProductCategory struct {
-	Name        string               `json:"name"`
-	Parent      int                  `json:"parent"`
-	Description string               `json:"description"`
-	Display     string               `json:"display"`
-	MenuOrder   int                  `json:"menu_order"`
-	Image       ProductCategoryImage `json:"image"`
+	Name        string               `json:"name,omitempty"`
+	Parent      int                  `json:"parent,omitempty"`
+	Description string               `json:"description,omitempty"`
+	Display     string               `json:"display,omitempty"`
+	MenuOrder   int                  `json:"menu_order,omitempty"`
+	Image       ProductCategoryImage `json:"image,omitempty"`
 }
 
 type ProductCategoryImage struct {
-	Src string `json:"src"`
+	Src string `json:"src,omitempty"`
 }
 
 // ProductCategoriesReturn is to decode the json data

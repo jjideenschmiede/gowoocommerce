@@ -18,11 +18,11 @@ import (
 
 // ProductAttributesBody is to structure the data
 type ProductAttributesBody struct {
-	Name        string `json:"name"`
-	Slug        string `json:"slug"`
-	Type        string `json:"type"`
-	OrderBy     string `json:"order_by"`
-	HasArchives bool   `json:"has_archives"`
+	Name        string `json:"name,omitempty"`
+	Slug        string `json:"slug,omitempty"`
+	Type        string `json:"type,omitempty"`
+	OrderBy     string `json:"order_by,omitempty"`
+	HasArchives bool   `json:"has_archives,omitempty"`
 }
 
 // ProductAttributesReturn is to decode the data

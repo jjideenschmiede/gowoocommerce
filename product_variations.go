@@ -18,57 +18,57 @@ import (
 
 // ProductVariationsBody are to structure the data
 type ProductVariationsBody struct {
-	Description       string                            `json:"description"`
-	Permalink         string                            `json:"permalink"`
-	Sku               string                            `json:"sku"`
-	Price             string                            `json:"price"`
-	RegularPrice      string                            `json:"regular_price"`
-	SalePrice         string                            `json:"sale_price"`
-	DateOnSaleFrom    interface{}                       `json:"date_on_sale_from"`
-	DateOnSaleFromGmt interface{}                       `json:"date_on_sale_from_gmt"`
-	DateOnSaleTo      interface{}                       `json:"date_on_sale_to"`
-	DateOnSaleToGmt   interface{}                       `json:"date_on_sale_to_gmt"`
-	OnSale            bool                              `json:"on_sale"`
-	Status            string                            `json:"status"`
-	Purchasable       bool                              `json:"purchasable"`
-	Virtual           bool                              `json:"virtual"`
-	Downloadable      bool                              `json:"downloadable"`
-	Downloads         []interface{}                     `json:"downloads"`
-	DownloadLimit     int                               `json:"download_limit"`
-	DownloadExpiry    int                               `json:"download_expiry"`
-	TaxStatus         string                            `json:"tax_status"`
-	TaxClass          string                            `json:"tax_class"`
-	ManageStock       bool                              `json:"manage_stock"`
-	StockQuantity     interface{}                       `json:"stock_quantity"`
-	StockStatus       string                            `json:"stock_status"`
-	Backorders        string                            `json:"backorders"`
-	BackordersAllowed bool                              `json:"backorders_allowed"`
-	Backordered       bool                              `json:"backordered"`
-	Weight            string                            `json:"weight"`
-	Dimensions        ProductVariationsBodyDimensions   `json:"dimensions"`
-	ShippingClass     string                            `json:"shipping_class"`
-	ShippingClassId   int                               `json:"shipping_class_id"`
-	Image             ProductVariationsBodyImages       `json:"image"`
-	Attributes        []ProductVariationsBodyAttributes `json:"attributes"`
-	MenuOrder         int                               `json:"menu_order"`
-	MetaData          []interface{}                     `json:"meta_data"`
+	Description       string                            `json:"description,omitempty"`
+	Permalink         string                            `json:"permalink,omitempty"`
+	Sku               string                            `json:"sku,omitempty"`
+	Price             string                            `json:"price,omitempty"`
+	RegularPrice      string                            `json:"regular_price,omitempty"`
+	SalePrice         string                            `json:"sale_price,omitempty"`
+	DateOnSaleFrom    interface{}                       `json:"date_on_sale_from,omitempty"`
+	DateOnSaleFromGmt interface{}                       `json:"date_on_sale_from_gmt,omitempty"`
+	DateOnSaleTo      interface{}                       `json:"date_on_sale_to,omitempty"`
+	DateOnSaleToGmt   interface{}                       `json:"date_on_sale_to_gmt,omitempty"`
+	OnSale            bool                              `json:"on_sale,omitempty"`
+	Status            string                            `json:"status,omitempty"`
+	Purchasable       bool                              `json:"purchasable,omitempty"`
+	Virtual           bool                              `json:"virtual,omitempty"`
+	Downloadable      bool                              `json:"downloadable,omitempty"`
+	Downloads         []interface{}                     `json:"downloads,omitempty"`
+	DownloadLimit     int                               `json:"download_limit,omitempty"`
+	DownloadExpiry    int                               `json:"download_expiry,omitempty"`
+	TaxStatus         string                            `json:"tax_status,omitempty"`
+	TaxClass          string                            `json:"tax_class,omitempty"`
+	ManageStock       bool                              `json:"manage_stock,omitempty"`
+	StockQuantity     interface{}                       `json:"stock_quantity,omitempty"`
+	StockStatus       string                            `json:"stock_status,omitempty"`
+	Backorders        string                            `json:"backorders,omitempty"`
+	BackordersAllowed bool                              `json:"backorders_allowed,omitempty"`
+	Backordered       bool                              `json:"backordered,omitempty"`
+	Weight            string                            `json:"weight,omitempty"`
+	Dimensions        ProductVariationsBodyDimensions   `json:"dimensions,omitempty"`
+	ShippingClass     string                            `json:"shipping_class,omitempty"`
+	ShippingClassId   int                               `json:"shipping_class_id,omitempty"`
+	Image             ProductVariationsBodyImages       `json:"image,omitempty"`
+	Attributes        []ProductVariationsBodyAttributes `json:"attributes,omitempty"`
+	MenuOrder         int                               `json:"menu_order,omitempty"`
+	MetaData          []interface{}                     `json:"meta_data,omitempty"`
 }
 
 type ProductVariationsBodyDimensions struct {
-	Length string `json:"length"`
-	Width  string `json:"width"`
-	Height string `json:"height"`
+	Length string `json:"length,omitempty"`
+	Width  string `json:"width,omitempty"`
+	Height string `json:"height,omitempty"`
 }
 
 type ProductVariationsBodyImages struct {
-	Src  string `json:"src"`
-	Name string `json:"name"`
-	Alt  string `json:"alt"`
+	Src  string `json:"src,omitempty"`
+	Name string `json:"name,omitempty"`
+	Alt  string `json:"alt,omitempty"`
 }
 
 type ProductVariationsBodyAttributes struct {
-	Name   string `json:"name"`
-	Option string `json:"option"`
+	Name   string `json:"name,omitempty"`
+	Option string `json:"option,omitempty"`
 }
 
 // ProductVariationsReturn is to decode the json data

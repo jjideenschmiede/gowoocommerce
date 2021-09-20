@@ -18,10 +18,10 @@ import (
 
 // ProductAttributeTermBody is to structure the request data
 type ProductAttributeTermBody struct {
-	Name        string `json:"name"`
-	Slug        string `json:"slug"`
-	Description string `json:"description"`
-	MenuOrder   int    `json:"menu_order"`
+	Name        string `json:"name,omitempty"`
+	Slug        string `json:"slug,omitempty"`
+	Description string `json:"description,omitempty"`
+	MenuOrder   int    `json:"menu_order,omitempty"`
 }
 
 // ProductAttributeTermsReturn is to decode the data
