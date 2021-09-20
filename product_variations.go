@@ -98,7 +98,7 @@ type ProductVariationsReturn struct {
 	DownloadExpiry    int           `json:"download_expiry"`
 	TaxStatus         string        `json:"tax_status"`
 	TaxClass          string        `json:"tax_class"`
-	ManageStock       string        `json:"manage_stock"`
+	ManageStock       bool          `json:"manage_stock"`
 	StockQuantity     int           `json:"stock_quantity"`
 	StockStatus       string        `json:"stock_status"`
 	Backorders        string        `json:"backorders"`
