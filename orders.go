@@ -73,23 +73,37 @@ type OrdersReturn struct {
 	Number             string        `json:"number"`
 	MetaData           []interface{} `json:"meta_data"`
 	LineItems          []struct {
-		Id          int           `json:"id"`
-		Name        string        `json:"name"`
-		ProductId   int           `json:"product_id"`
-		VariationId int           `json:"variation_id"`
-		Quantity    int           `json:"quantity"`
-		TaxClass    string        `json:"tax_class"`
-		Subtotal    string        `json:"subtotal"`
-		SubtotalTax string        `json:"subtotal_tax"`
-		Total       string        `json:"total"`
-		TotalTax    string        `json:"total_tax"`
-		Taxes       []interface{} `json:"taxes"`
-		MetaData    []interface{} `json:"meta_data"`
-		Sku         string        `json:"sku"`
-		Price       float64       `json:"price"`
-		ParentName  interface{}   `json:"parent_name"`
+		Id          int    `json:"id"`
+		Name        string `json:"name"`
+		ProductId   int    `json:"product_id"`
+		VariationId int    `json:"variation_id"`
+		Quantity    int    `json:"quantity"`
+		TaxClass    string `json:"tax_class"`
+		Subtotal    string `json:"subtotal"`
+		SubtotalTax string `json:"subtotal_tax"`
+		Total       string `json:"total"`
+		TotalTax    string `json:"total_tax"`
+		Taxes       []struct {
+			Id       int    `json:"id"`
+			Total    string `json:"total"`
+			Subtotal string `json:"subtotal"`
+		} `json:"taxes"`
+		MetaData   []interface{} `json:"meta_data"`
+		Sku        string        `json:"sku"`
+		Price      float64       `json:"price"`
+		ParentName interface{}   `json:"parent_name"`
 	} `json:"line_items"`
-	TaxLines         []interface{} `json:"tax_lines"`
+	TaxLines []struct {
+		Id               int           `json:"id"`
+		RateCode         string        `json:"rate_code"`
+		RateId           int           `json:"rate_id"`
+		Label            string        `json:"label"`
+		Compound         bool          `json:"compound"`
+		TaxTotal         string        `json:"tax_total"`
+		ShippingTaxTotal string        `json:"shipping_tax_total"`
+		RatePercent      int           `json:"rate_percent"`
+		MetaData         []interface{} `json:"meta_data"`
+	} `json:"tax_lines"`
 	ShippingLines    []interface{} `json:"shipping_lines"`
 	FeeLines         []interface{} `json:"fee_lines"`
 	CouponLines      []interface{} `json:"coupon_lines"`
