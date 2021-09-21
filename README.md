@@ -742,7 +742,7 @@ r := &gowoocommerce.Request{
 }
 
 // Get all orders from the page
-orders, err := gowoocommerce.Orders(1, r)
+orders, err := gowoocommerce.Orders(1, "2021-09-13T11:13:42", r)
 if err != nil {
     fmt.Println(err)
 } else {
