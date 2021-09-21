@@ -100,8 +100,8 @@ type OrdersReturn struct {
 			Key   string `json:"key"`
 			Value string `json:"value"`
 		} `json:"meta_data"`
-		Sku   string `json:"sku"`
-		Price int    `json:"price"`
+		Sku   string  `json:"sku"`
+		Price float64 `json:"price"`
 	} `json:"line_items"`
 	TaxLines []struct {
 		Id               int           `json:"id"`
