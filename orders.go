@@ -147,10 +147,10 @@ type OrdersReturn struct {
 }
 
 // Orders is to get all orders since id
-func Orders(page int, r *Request) ([]OrdersReturn, error) {
+func Orders(page int, afterDate string, r *Request) ([]OrdersReturn, error) {
 
 	// Set config for new request
-	c := Config{fmt.Sprintf("/wp-json/wc/v3/orders?page=%d&per_page=100", page), "GET", nil}
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/orders?page=%d&per_page=100&after=%s", page, afterDate), "GET", nil}
 
 	// Send request
 	response, err := c.Send(r)
