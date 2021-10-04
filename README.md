@@ -240,9 +240,7 @@ if err != nil {
 
 ### List all product tags
 
-### Create a product tag
-
-If you want to create a new keyword, you can do this using the following function. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#product-tag-properties).
+If you want to display all keywords, you can use the following function. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-product-tags).
 
 ```go
 // Define the request
