@@ -238,6 +238,8 @@ if err != nil {
 }
 ```
 
+### List all product tags
+
 ### Create a product tag
 
 If you want to create a new keyword, you can do this using the following function. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#product-tag-properties).
@@ -245,9 +247,30 @@ If you want to create a new keyword, you can do this using the following functio
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-BaseUrl:        "",
-ConsumerKey:    "",
-ConsumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Get all product tags
+productTags, err := gowoocommerce.ProductTags(r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productTags)
+}
+```
+
+### Create a product tag
+
+If you want to create a new keyword, you can do this using the following function. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#product-tag-properties).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Create product tag body
@@ -273,9 +296,9 @@ If you want to update a keyword, you need the id of the product keyword. The des
 ```go
 // Define the request
 r := &gowoocommerce.Request{
-BaseUrl:        "",
-ConsumerKey:    "",
-ConsumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Create product tag body
@@ -285,7 +308,7 @@ body := gowoocommerce.ProductTagsBody{
     Description: "Das ist die Beschreibung der Schuhe.",
 }
 
-// Create a new product tag
+// Update a product tag
 productTag, err := gowoocommerce.UpdateProductTag(187, body, r)
 if err != nil {
     fmt.Println(err)
