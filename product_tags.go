@@ -13,6 +13,7 @@ package gowoocommerce
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // ProductTagsBody is to structure the body data
@@ -39,7 +40,7 @@ type ProductTagsReturn struct {
 	} `json:"_links"`
 }
 
-// CreateProductTag is to create a new variant to a product
+// CreateProductTag is to create a new product tag
 func CreateProductTag(body ProductTagsBody, r *Request) (ProductTagsReturn, error) {
 
 	// Convert body
@@ -50,6 +51,40 @@ func CreateProductTag(body ProductTagsBody, r *Request) (ProductTagsReturn, erro
 
 	// Set config for new request
 	c := Config{"/wp-json/wc/v3/products/tags", "POST", convert}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return ProductTagsReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode ProductTagsReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return ProductTagsReturn{}, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
+// UpdateProductTag is to update an existing product tag
+func UpdateProductTag(id int, body ProductTagsBody, r *Request) (ProductTagsReturn, error) {
+
+	// Convert body
+	convert, err := json.Marshal(body)
+	if err != nil {
+		return ProductTagsReturn{}, err
+	}
+
+	// Set config for new request
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/tags/%d", id), "PUT", convert}
 
 	// Send request
 	response, err := c.Send(r)
