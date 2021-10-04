@@ -67,7 +67,7 @@ type ProductsBody struct {
 	ParentId          int                      `json:"parent_id,omitempty"`
 	PurchaseNote      string                   `json:"purchase_note,omitempty"`
 	Categories        []ProductsBodyCategories `json:"categories,omitempty"`
-	Tags              []interface{}            `json:"tags,omitempty"`
+	Tags              []ProductsBodyTags       `json:"tags,omitempty"`
 	Images            []ProductsBodyImages     `json:"images,omitempty"`
 	Attributes        []ProductsBodyAttributes `json:"attributes,omitempty"`
 	DefaultAttributes []interface{}            `json:"default_attributes,omitempty"`
@@ -89,6 +89,12 @@ type ProductsBodyCategories struct {
 	Id   int    `json:"id,omitempty"`
 	Name string `json:"name,omitempty"`
 	Slug string `json:"slug,omitempty"`
+}
+
+type ProductsBodyTags struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+	Slug string `json:"slug"`
 }
 
 type ProductsBodyImages struct {
