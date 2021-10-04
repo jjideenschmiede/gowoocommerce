@@ -40,6 +40,34 @@ type ProductTagsReturn struct {
 	} `json:"_links"`
 }
 
+// ProductTags is get a list of all product tags
+func ProductTags(r *Request) ([]ProductTagsReturn, error) {
+
+	// Set config for new request
+	c := Config{"/wp-json/wc/v3/products/tags", "GET", nil}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return nil, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode []ProductTagsReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return nil, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
 // CreateProductTag is to create a new product tag
 func CreateProductTag(body ProductTagsBody, r *Request) (ProductTagsReturn, error) {
 
