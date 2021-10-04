@@ -68,6 +68,34 @@ func ProductTags(r *Request) ([]ProductTagsReturn, error) {
 
 }
 
+// ProductTag is get a product tag
+func ProductTag(id int, r *Request) (ProductTagsReturn, error) {
+
+	// Set config for new request
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/tags/%d", id), "GET", nil}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return ProductTagsReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode ProductTagsReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return ProductTagsReturn{}, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
 // CreateProductTag is to create a new product tag
 func CreateProductTag(body ProductTagsBody, r *Request) (ProductTagsReturn, error) {
 
@@ -113,6 +141,34 @@ func UpdateProductTag(id int, body ProductTagsBody, r *Request) (ProductTagsRetu
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/tags/%d", id), "PUT", convert}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return ProductTagsReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode ProductTagsReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return ProductTagsReturn{}, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
+// DeleteProductTag is to delete an existing product tag
+func DeleteProductTag(id int, force bool, r *Request) (ProductTagsReturn, error) {
+
+	// Set config for new request
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/tags/%d?force=%t", id, force), "DELETE", nil}
 
 	// Send request
 	response, err := c.Send(r)
