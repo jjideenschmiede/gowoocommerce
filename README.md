@@ -259,6 +259,27 @@ if err != nil {
 }
 ```
 
+### Retrieve a product tag
+
+If you want to read out a product tag, you can do this using the following function. Only an Id is needed for this. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#retrieve-a-product-tag).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Get a product tags
+productTag, err := gowoocommerce.ProductTag(187, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productTag)
+}
+```
+
 ### Create a product tag
 
 If you want to create a new keyword, you can do this using the following function. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#product-tag-properties).
@@ -308,6 +329,27 @@ body := gowoocommerce.ProductTagsBody{
 
 // Update a product tag
 productTag, err := gowoocommerce.UpdateProductTag(187, body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productTag)
+}
+```
+
+### Delete a product tag
+
+If you want to delete a product keyword, then the id is needed a boolean whether to remove the keyword irrevocably or not. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#delete-a-product-tag).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Delete date a product tag
+productTag, err := gowoocommerce.DeleteProductTag(159, true, r)
 if err != nil {
     fmt.Println(err)
 } else {
