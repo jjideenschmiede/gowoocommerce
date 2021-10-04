@@ -92,9 +92,9 @@ type ProductsBodyCategories struct {
 }
 
 type ProductsBodyTags struct {
-	Id   int    `json:"id"`
-	Name string `json:"name"`
-	Slug string `json:"slug"`
+	Id   int    `json:"id,omitempty"`
+	Name string `json:"name,omitempty"`
+	Slug string `json:"slug,omitempty"`
 }
 
 type ProductsBodyImages struct {
