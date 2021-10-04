@@ -238,6 +238,34 @@ if err != nil {
 }
 ```
 
+### Create a product tag
+
+If you want to create a new keyword, you can do this using the following function. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?python#product-tag-properties).
+
+```go
+// Define the request
+r := &gowoocommerce.Request{
+BaseUrl:        "",
+ConsumerKey:    "",
+ConsumerSecret: "",
+}
+
+// Create product tag body
+body := ProductTagsBody{
+    Name:        "Schuhe",
+    Slug:        "schuhe",
+    Description: "Das ist die Beschreibung der Schuhe.",
+}
+
+// Create a new product tag
+productTag, err := CreateProductTag(body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(productTag)
+}
+```
+
 ### Product attributes
 
 With this function you can read out all product attributes. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#create-a-product-attribute).
