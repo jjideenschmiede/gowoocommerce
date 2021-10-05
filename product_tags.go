@@ -19,8 +19,8 @@ import (
 // ProductTagsBody is to structure the body data
 type ProductTagsBody struct {
 	Name        string `json:"name"`
-	Slug        string `json:"slug"`
-	Description string `json:"description"`
+	Slug        string `json:"slug,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 // ProductTagsReturn is to decode the json data
