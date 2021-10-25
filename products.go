@@ -213,7 +213,7 @@ type ProductsReturn struct {
 }
 
 // Products are to get a list of all products per page
-func Products(page int, r *Request) ([]ProductsReturn, error) {
+func Products(page int, r Request) ([]ProductsReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products?page=%d&per_page=100", page), "GET", nil}
@@ -241,7 +241,7 @@ func Products(page int, r *Request) ([]ProductsReturn, error) {
 }
 
 // CreateProduct is to create a new product
-func CreateProduct(body ProductsBody, r *Request) (ProductsReturn, error) {
+func CreateProduct(body ProductsBody, r Request) (ProductsReturn, error) {
 
 	// Convert body
 	convert, err := json.Marshal(body)
@@ -275,7 +275,7 @@ func CreateProduct(body ProductsBody, r *Request) (ProductsReturn, error) {
 }
 
 // UpdateProduct is to update a product
-func UpdateProduct(id int, body ProductsBody, r *Request) (ProductsReturn, error) {
+func UpdateProduct(id int, body ProductsBody, r Request) (ProductsReturn, error) {
 
 	// Convert body
 	convert, err := json.Marshal(body)
@@ -309,7 +309,7 @@ func UpdateProduct(id int, body ProductsBody, r *Request) (ProductsReturn, error
 }
 
 // DeleteProduct is to remove a product from woocommerce
-func DeleteProduct(id int, force bool, r *Request) (ProductsReturn, error) {
+func DeleteProduct(id int, force bool, r Request) (ProductsReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/%d?force=%t", id, force), "DELETE", nil}

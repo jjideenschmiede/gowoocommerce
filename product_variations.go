@@ -159,7 +159,7 @@ type ProductVariationsReturn struct {
 }
 
 // ProductVariations is to get a list of all product variations
-func ProductVariations(productId, page int, r *Request) ([]ProductVariationsReturn, error) {
+func ProductVariations(productId, page int, r Request) ([]ProductVariationsReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/%d/variations?page=%d&per_page=100", productId, page), "GET", nil}
@@ -187,7 +187,7 @@ func ProductVariations(productId, page int, r *Request) ([]ProductVariationsRetu
 }
 
 // CreateProductVariations is to create a new variant to a product
-func CreateProductVariations(productId int, body ProductVariationsBody, r *Request) (ProductVariationsReturn, error) {
+func CreateProductVariations(productId int, body ProductVariationsBody, r Request) (ProductVariationsReturn, error) {
 
 	// Convert body
 	convert, err := json.Marshal(body)
@@ -221,7 +221,7 @@ func CreateProductVariations(productId int, body ProductVariationsBody, r *Reque
 }
 
 // UpdateProductVariations is to create a new variant to a product
-func UpdateProductVariations(productId, variantId int, body ProductVariationsBody, r *Request) (ProductVariationsReturn, error) {
+func UpdateProductVariations(productId, variantId int, body ProductVariationsBody, r Request) (ProductVariationsReturn, error) {
 
 	// Convert body
 	convert, err := json.Marshal(body)
@@ -255,7 +255,7 @@ func UpdateProductVariations(productId, variantId int, body ProductVariationsBod
 }
 
 // DeleteProductVariations is to remove a variant from a product
-func DeleteProductVariations(productId, variantId int, r *Request) (ProductVariationsReturn, error) {
+func DeleteProductVariations(productId, variantId int, r Request) (ProductVariationsReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/%d/variations/%d", productId, variantId), "DELETE", nil}

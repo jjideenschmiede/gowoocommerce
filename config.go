@@ -28,7 +28,7 @@ type Request struct {
 }
 
 // Send is to send a new request
-func (c *Config) Send(r *Request) (*http.Response, error) {
+func (c *Config) Send(r Request) (*http.Response, error) {
 
 	// Set url
 	url := r.BaseUrl + c.Path
