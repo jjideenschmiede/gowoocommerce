@@ -123,8 +123,14 @@ type OrdersReturn struct {
 	} `json:"_links"`
 }
 
+// UpdateOrderBody is to structure the data
+type UpdateOrderBody struct {
+	Id     int    `json:"id"`
+	Status string `json:"status"`
+}
+
 // Orders is to get all orders since id
-func Orders(page int, afterDate string, r *Request) ([]OrdersReturn, error) {
+func Orders(page int, afterDate string, r Request) ([]OrdersReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/orders?page=%d&per_page=100&after=%s", page, afterDate), "GET", nil}
@@ -144,6 +150,40 @@ func Orders(page int, afterDate string, r *Request) ([]OrdersReturn, error) {
 	err = json.NewDecoder(response.Body).Decode(&decode)
 	if err != nil {
 		return nil, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
+// UpdateOrder is to update the status of an order
+func UpdateOrder(body UpdateOrderBody, r Request) (OrdersReturn, error) {
+
+	// Convert body
+	convert, err := json.Marshal(body)
+	if err != nil {
+		return OrdersReturn{}, err
+	}
+
+	// Set config for new request
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/orders/%d", body.Id), "PUT", convert}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return OrdersReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode OrdersReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return OrdersReturn{}, err
 	}
 
 	// Return data
