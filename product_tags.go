@@ -41,7 +41,7 @@ type ProductTagsReturn struct {
 }
 
 // ProductTags is get a list of all product tags
-func ProductTags(r *Request) ([]ProductTagsReturn, error) {
+func ProductTags(r Request) ([]ProductTagsReturn, error) {
 
 	// Set config for new request
 	c := Config{"/wp-json/wc/v3/products/tags", "GET", nil}
@@ -69,7 +69,7 @@ func ProductTags(r *Request) ([]ProductTagsReturn, error) {
 }
 
 // ProductTag is get a product tag
-func ProductTag(id int, r *Request) (ProductTagsReturn, error) {
+func ProductTag(id int, r Request) (ProductTagsReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/tags/%d", id), "GET", nil}
@@ -97,7 +97,7 @@ func ProductTag(id int, r *Request) (ProductTagsReturn, error) {
 }
 
 // CreateProductTag is to create a new product tag
-func CreateProductTag(body ProductTagsBody, r *Request) (ProductTagsReturn, error) {
+func CreateProductTag(body ProductTagsBody, r Request) (ProductTagsReturn, error) {
 
 	// Convert body
 	convert, err := json.Marshal(body)
@@ -131,7 +131,7 @@ func CreateProductTag(body ProductTagsBody, r *Request) (ProductTagsReturn, erro
 }
 
 // UpdateProductTag is to update an existing product tag
-func UpdateProductTag(id int, body ProductTagsBody, r *Request) (ProductTagsReturn, error) {
+func UpdateProductTag(id int, body ProductTagsBody, r Request) (ProductTagsReturn, error) {
 
 	// Convert body
 	convert, err := json.Marshal(body)
@@ -165,7 +165,7 @@ func UpdateProductTag(id int, body ProductTagsBody, r *Request) (ProductTagsRetu
 }
 
 // DeleteProductTag is to delete an existing product tag
-func DeleteProductTag(id int, force bool, r *Request) (ProductTagsReturn, error) {
+func DeleteProductTag(id int, force bool, r Request) (ProductTagsReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/tags/%d?force=%t", id, force), "DELETE", nil}

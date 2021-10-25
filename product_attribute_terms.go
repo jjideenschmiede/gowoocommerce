@@ -43,7 +43,7 @@ type ProductAttributeTermsReturn struct {
 }
 
 // ProductAttributeTerms is to get all terms
-func ProductAttributeTerms(attributeId int, r *Request) ([]ProductAttributeTermsReturn, error) {
+func ProductAttributeTerms(attributeId int, r Request) ([]ProductAttributeTermsReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/attributes/%d/terms", attributeId), "GET", nil}
@@ -71,7 +71,7 @@ func ProductAttributeTerms(attributeId int, r *Request) ([]ProductAttributeTerms
 }
 
 // CreateProductAttributeTerms is to create a new term
-func CreateProductAttributeTerms(attributeId int, body ProductAttributeTermBody, r *Request) (ProductAttributeTermsReturn, error) {
+func CreateProductAttributeTerms(attributeId int, body ProductAttributeTermBody, r Request) (ProductAttributeTermsReturn, error) {
 
 	// Convert body
 	convert, err := json.Marshal(body)
@@ -105,7 +105,7 @@ func CreateProductAttributeTerms(attributeId int, body ProductAttributeTermBody,
 }
 
 // UpdateProductAttributeTerms is to update a term
-func UpdateProductAttributeTerms(attributeId, termId int, body ProductAttributeTermBody, r *Request) (ProductAttributeTermsReturn, error) {
+func UpdateProductAttributeTerms(attributeId, termId int, body ProductAttributeTermBody, r Request) (ProductAttributeTermsReturn, error) {
 
 	// Convert body
 	convert, err := json.Marshal(body)
@@ -139,7 +139,7 @@ func UpdateProductAttributeTerms(attributeId, termId int, body ProductAttributeT
 }
 
 // DeleteProductAttributeTerms is to delete a term
-func DeleteProductAttributeTerms(attributeId, termId int, force bool, r *Request) (ProductAttributeTermsReturn, error) {
+func DeleteProductAttributeTerms(attributeId, termId int, force bool, r Request) (ProductAttributeTermsReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/attributes/%d/terms/%d?force=%t", attributeId, termId, force), "DELETE", nil}

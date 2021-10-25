@@ -52,7 +52,7 @@ type ProductCategoriesReturn struct {
 }
 
 // ProductCategories is to get a list of all product categories
-func ProductCategories(r *Request) ([]ProductCategoriesReturn, error) {
+func ProductCategories(r Request) ([]ProductCategoriesReturn, error) {
 
 	// Set config for new request
 	c := Config{"/wp-json/wc/v3/products/categories", "GET", nil}
@@ -80,7 +80,7 @@ func ProductCategories(r *Request) ([]ProductCategoriesReturn, error) {
 }
 
 // AddProductCategory is to create a new category
-func AddProductCategory(body ProductCategory, r *Request) (ProductCategoriesReturn, error) {
+func AddProductCategory(body ProductCategory, r Request) (ProductCategoriesReturn, error) {
 
 	// Convert body data
 	convert, err := json.Marshal(body)
@@ -114,7 +114,7 @@ func AddProductCategory(body ProductCategory, r *Request) (ProductCategoriesRetu
 }
 
 // UpdateProductCategory is to update an existing category
-func UpdateProductCategory(id int, body ProductCategory, r *Request) (ProductCategoriesReturn, error) {
+func UpdateProductCategory(id int, body ProductCategory, r Request) (ProductCategoriesReturn, error) {
 
 	// Convert body data
 	convert, err := json.Marshal(body)
@@ -148,7 +148,7 @@ func UpdateProductCategory(id int, body ProductCategory, r *Request) (ProductCat
 }
 
 // DeleteProductCategory is to delete a product category
-func DeleteProductCategory(id int, force bool, r *Request) (ProductCategoriesReturn, error) {
+func DeleteProductCategory(id int, force bool, r Request) (ProductCategoriesReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/categories/%d?force=%t", id, force), "DELETE", nil}

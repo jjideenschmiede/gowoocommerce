@@ -44,7 +44,7 @@ type ProductAttributesReturn struct {
 }
 
 // ProductAttributes is to get a list of all product attributes
-func ProductAttributes(r *Request) ([]ProductAttributesReturn, error) {
+func ProductAttributes(r Request) ([]ProductAttributesReturn, error) {
 
 	// Set config for new request
 	c := Config{"/wp-json/wc/v3/products/attributes", "GET", nil}
@@ -72,7 +72,7 @@ func ProductAttributes(r *Request) ([]ProductAttributesReturn, error) {
 }
 
 // CreateProductAttributes is to create a new attribute
-func CreateProductAttributes(body ProductAttributesBody, r *Request) (ProductAttributesReturn, error) {
+func CreateProductAttributes(body ProductAttributesBody, r Request) (ProductAttributesReturn, error) {
 
 	// Convert body
 	convert, err := json.Marshal(body)
@@ -106,7 +106,7 @@ func CreateProductAttributes(body ProductAttributesBody, r *Request) (ProductAtt
 }
 
 // UpdateProductAttributes is to update a attribute
-func UpdateProductAttributes(id int, body ProductAttributesBody, r *Request) (ProductAttributesReturn, error) {
+func UpdateProductAttributes(id int, body ProductAttributesBody, r Request) (ProductAttributesReturn, error) {
 
 	// Convert body
 	convert, err := json.Marshal(body)
@@ -140,7 +140,7 @@ func UpdateProductAttributes(id int, body ProductAttributesBody, r *Request) (Pr
 }
 
 // DeleteProductAttributes is to delete a product attribute
-func DeleteProductAttributes(id int, r *Request) (ProductAttributesReturn, error) {
+func DeleteProductAttributes(id int, r Request) (ProductAttributesReturn, error) {
 
 	// Set config for new request
 	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/attributes/%d", id), "DELETE", nil}
