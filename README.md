@@ -1,5 +1,7 @@
 # gowoocommerce
 
+[![Go](https://github.com/jjideenschmiede/gowoocommerce/actions/workflows/go.yml/badge.svg)](https://github.com/jjideenschmiede/gowoocommerce/actions/workflows/go.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/jjideenschmiede/gowoocommerce)](https://goreportcard.com/report/github.com/jjideenschmiede/gowoocommerce) [![Go Doc](https://godoc.org/github.com/jjideenschmiede/gowoocommerce?status.svg)](https://pkg.go.dev/github.com/jjideenschmiede/gowoocommerce)  
+
 With this library it is possible to call the Woocommerce v3 api with functions. We extend this library according to our needs. We are looking forward to more hardworking hands.
 
 ## Install
@@ -866,5 +868,32 @@ if err != nil {
     fmt.Println(err)
 } else {
     fmt.Println(orders)
+}
+```
+
+### Update a order
+
+If you want to update an order, this is currently possible via this function. Since only the status is stored in the documentation for the time being, we have currently only stored the status. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-an-order).
+
+```go
+// Define the request
+r := gowoocommerce.Request{
+BaseUrl:        "",
+ConsumerKey:    "",
+ConsumerSecret: "",
+}
+
+// Define order status update
+body := UpdateOrderBody{
+    Id:     330,
+    Status: "completed",
+}
+
+// Update the status of an order
+updateOrderStatus, err := UpdateOrder(body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(updateOrderStatus)
 }
 ```
