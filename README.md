@@ -878,22 +878,50 @@ If you want to update an order, this is currently possible via this function. Si
 ```go
 // Define the request
 r := gowoocommerce.Request{
-BaseUrl:        "",
-ConsumerKey:    "",
-ConsumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Define order status update
-body := UpdateOrderBody{
+body := gowoocommerce.UpdateOrderBody{
     Id:     330,
     Status: "completed",
 }
 
 // Update the status of an order
-updateOrderStatus, err := UpdateOrder(body, r)
+updateOrderStatus, err := gowoocommerce.UpdateOrder(body, r)
 if err != nil {
     fmt.Println(err)
 } else {
     fmt.Println(updateOrderStatus)
+}
+```
+
+### Create a new order note
+
+If you want to create a note for an order, you can do this using the following function. You can decide whether it is a note for the customer or an internal note. In this example the note is also for the customer. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?python#create-an-order-note).
+
+```go
+// Define the request
+r := gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Define order status update
+body := gowoocommerce.OrderNotesBody{
+    Note:         "Trackingnummer",
+    CustomerNote: true,
+    AddedByUser:  false,
+}
+
+// Update the status of an order
+createOrderNote, err := gowoocommerce.CreateOrderNote(12, body, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(createOrderNote)
 }
 ```
