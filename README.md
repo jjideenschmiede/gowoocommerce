@@ -1,6 +1,6 @@
 # gowoocommerce
 
-[![Go](https://github.com/jjideenschmiede/gowoocommerce/actions/workflows/go.yml/badge.svg)](https://github.com/jjideenschmiede/gowoocommerce/actions/workflows/go.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/jjideenschmiede/gowoocommerce)](https://goreportcard.com/report/github.com/jjideenschmiede/gowoocommerce) [![Go Doc](https://godoc.org/github.com/jjideenschmiede/gowoocommerce?status.svg)](https://pkg.go.dev/github.com/jjideenschmiede/gowoocommerce)  
+[![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/jjideenschmiede/gowoocommerce.svg)](https://golang.org/) [![Go](https://github.com/jjideenschmiede/gowoocommerce/actions/workflows/go.yml/badge.svg)](https://github.com/jjideenschmiede/gowoocommerce/actions/workflows/go.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/jjideenschmiede/gowoocommerce)](https://goreportcard.com/report/github.com/jjideenschmiede/gowoocommerce) [![Go Doc](https://godoc.org/github.com/jjideenschmiede/gowoocommerce?status.svg)](https://pkg.go.dev/github.com/jjideenschmiede/gowoocommerce) ![Lines of code](https://img.shields.io/tokei/lines/github/jjideenschmiede/gowoocommerce) [![Developed with <3](https://img.shields.io/badge/Developed%20with-%3C3-19ABFF)](https://jj-dev.de/)  
 
 With this library it is possible to call the Woocommerce v3 api with functions. We extend this library according to our needs. We are looking forward to more hardworking hands.
 
