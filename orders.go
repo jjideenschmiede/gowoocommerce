@@ -104,7 +104,22 @@ type OrdersReturn struct {
 		RatePercent      int           `json:"rate_percent"`
 		MetaData         []interface{} `json:"meta_data"`
 	} `json:"tax_lines"`
-	ShippingLines    []interface{} `json:"shipping_lines"`
+	ShippingLines []struct {
+		Id          int           `json:"id"`
+		MethodTitle string        `json:"method_title"`
+		MethodId    string        `json:"method_id"`
+		InstanceId  string        `json:"instance_id"`
+		Total       string        `json:"total"`
+		TotalTax    string        `json:"total_tax"`
+		Taxes       []interface{} `json:"taxes"`
+		MetaData    []struct {
+			Id           int         `json:"id"`
+			Key          string      `json:"key"`
+			Value        interface{} `json:"value"`
+			DisplayKey   string      `json:"display_key"`
+			DisplayValue interface{} `json:"display_value"`
+		} `json:"meta_data"`
+	} `json:"shipping_lines"`
 	FeeLines         []interface{} `json:"fee_lines"`
 	CouponLines      []interface{} `json:"coupon_lines"`
 	Refunds          []interface{} `json:"refunds"`
