@@ -47,6 +47,7 @@ type OrdersReturn struct {
 		Country   string `json:"country"`
 		Email     string `json:"email"`
 		Phone     string `json:"phone"`
+		Title     string `json:"title"`
 	} `json:"billing"`
 	Shipping struct {
 		FirstName string `json:"first_name"`
@@ -59,20 +60,25 @@ type OrdersReturn struct {
 		Postcode  string `json:"postcode"`
 		Country   string `json:"country"`
 		Phone     string `json:"phone"`
+		Title     string `json:"title"`
 	} `json:"shipping"`
-	PaymentMethod      string        `json:"payment_method"`
-	PaymentMethodTitle string        `json:"payment_method_title"`
-	TransactionId      string        `json:"transaction_id"`
-	CustomerIpAddress  string        `json:"customer_ip_address"`
-	CustomerUserAgent  string        `json:"customer_user_agent"`
-	CreatedVia         string        `json:"created_via"`
-	CustomerNote       string        `json:"customer_note"`
-	DateCompleted      interface{}   `json:"date_completed"`
-	DatePaid           interface{}   `json:"date_paid"`
-	CartHash           string        `json:"cart_hash"`
-	Number             string        `json:"number"`
-	MetaData           []interface{} `json:"meta_data"`
-	LineItems          []struct {
+	PaymentMethod      string      `json:"payment_method"`
+	PaymentMethodTitle string      `json:"payment_method_title"`
+	TransactionId      string      `json:"transaction_id"`
+	CustomerIpAddress  string      `json:"customer_ip_address"`
+	CustomerUserAgent  string      `json:"customer_user_agent"`
+	CreatedVia         string      `json:"created_via"`
+	CustomerNote       string      `json:"customer_note"`
+	DateCompleted      interface{} `json:"date_completed"`
+	DatePaid           string      `json:"date_paid"`
+	CartHash           string      `json:"cart_hash"`
+	Number             string      `json:"number"`
+	MetaData           []struct {
+		Id    int    `json:"id"`
+		Key   string `json:"key"`
+		Value string `json:"value"`
+	} `json:"meta_data"`
+	LineItems []struct {
 		Id          int    `json:"id"`
 		Name        string `json:"name"`
 		ProductId   int    `json:"product_id"`
@@ -88,10 +94,16 @@ type OrdersReturn struct {
 			Total    string `json:"total"`
 			Subtotal string `json:"subtotal"`
 		} `json:"taxes"`
-		MetaData   []interface{} `json:"meta_data"`
-		Sku        string        `json:"sku"`
-		Price      float64       `json:"price"`
-		ParentName interface{}   `json:"parent_name"`
+		MetaData []struct {
+			Id           int    `json:"id"`
+			Key          string `json:"key"`
+			Value        string `json:"value"`
+			DisplayKey   string `json:"display_key"`
+			DisplayValue string `json:"display_value"`
+		} `json:"meta_data"`
+		Sku        string      `json:"sku"`
+		Price      float64     `json:"price"`
+		ParentName interface{} `json:"parent_name"`
 	} `json:"line_items"`
 	TaxLines []struct {
 		Id               int           `json:"id"`
@@ -126,15 +138,65 @@ type OrdersReturn struct {
 	DateCreatedGmt   string        `json:"date_created_gmt"`
 	DateModifiedGmt  string        `json:"date_modified_gmt"`
 	DateCompletedGmt interface{}   `json:"date_completed_gmt"`
-	DatePaidGmt      interface{}   `json:"date_paid_gmt"`
-	CurrencySymbol   string        `json:"currency_symbol"`
-	Links            struct {
+	DatePaidGmt      string        `json:"date_paid_gmt"`
+	Shipments        []struct {
+		Id                 int         `json:"id"`
+		DateCreated        string      `json:"date_created"`
+		DateCreatedGmt     string      `json:"date_created_gmt"`
+		DateSent           interface{} `json:"date_sent"`
+		DateSentGmt        interface{} `json:"date_sent_gmt"`
+		EstDeliveryDate    interface{} `json:"est_delivery_date"`
+		EstDeliveryDateGmt interface{} `json:"est_delivery_date_gmt"`
+		Total              string      `json:"total"`
+		Weight             string      `json:"weight"`
+		Status             string      `json:"status"`
+		TrackingId         string      `json:"tracking_id"`
+		TrackingUrl        string      `json:"tracking_url"`
+		ShippingProvider   string      `json:"shipping_provider"`
+		Dimensions         struct {
+			Length string `json:"length"`
+			Width  string `json:"width"`
+			Height string `json:"height"`
+		} `json:"dimensions"`
+		Address struct {
+			FirstName string `json:"first_name"`
+			LastName  string `json:"last_name"`
+			Company   string `json:"company"`
+			Address1  string `json:"address_1"`
+			Address2  string `json:"address_2"`
+			City      string `json:"city"`
+			State     string `json:"state"`
+			Postcode  string `json:"postcode"`
+			Country   string `json:"country"`
+			Phone     string `json:"phone"`
+			Email     string `json:"email"`
+		} `json:"address"`
+		Items []struct {
+			Id          int    `json:"id"`
+			Name        string `json:"name"`
+			OrderItemId int    `json:"order_item_id"`
+			ProductId   int    `json:"product_id"`
+			Quantity    int    `json:"quantity"`
+		} `json:"items"`
+	} `json:"shipments"`
+	CurrencySymbol        string `json:"currency_symbol"`
+	ParcelDeliveryOptedIn string `json:"parcel_delivery_opted_in"`
+	DirectDebit           struct {
+		Holder    string `json:"holder"`
+		Iban      string `json:"iban"`
+		Bic       string `json:"bic"`
+		MandateId string `json:"mandate_id"`
+	} `json:"direct_debit"`
+	Links struct {
 		Self []struct {
 			Href string `json:"href"`
 		} `json:"self"`
 		Collection []struct {
 			Href string `json:"href"`
 		} `json:"collection"`
+		Customer []struct {
+			Href string `json:"href"`
+		} `json:"customer"`
 	} `json:"_links"`
 }
 
