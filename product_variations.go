@@ -40,7 +40,6 @@ type ProductVariationsBody struct {
 	TaxClass          string                            `json:"tax_class,omitempty"`
 	ManageStock       bool                              `json:"manage_stock,omitempty"`
 	StockQuantity     interface{}                       `json:"stock_quantity,omitempty"`
-	StockStatus       string                            `json:"stock_status,omitempty"`
 	Backorders        string                            `json:"backorders,omitempty"`
 	BackordersAllowed bool                              `json:"backorders_allowed,omitempty"`
 	Backordered       bool                              `json:"backordered,omitempty"`
