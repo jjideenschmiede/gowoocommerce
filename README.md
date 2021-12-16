@@ -133,9 +133,9 @@ If you want to update a product, it works like creating a product. With the diff
 ```go
 // Define the request
 r := gowoocommerce.Request{
-BaseUrl:        "",
-ConsumerKey:    "",
-ConsumerSecret: "",
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
 }
 
 // Define product body
@@ -216,6 +216,28 @@ if err != nil {
     fmt.Println(products)
 }
 ```
+
+### Update stock of a product
+
+If you want to update the stock of a product, it works like creating a product. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-a-product).
+
+```go
+// Define the request
+r := gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Update the stock
+updateStock, err := gowoocommerce.UpdateProductStock(73, 3, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(updateStock)
+}
+```
+
 
 ### Delete a product
 
@@ -720,6 +742,28 @@ if err != nil {
 }
 ```
 
+### Update the stock of a product variant
+
+If you want to update the stock of a variant, you can do this as follows. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#update-a-product-variation).
+
+
+```go
+// Define the request
+r := gowoocommerce.Request{
+    BaseUrl:        "",
+    ConsumerKey:    "",
+    ConsumerSecret: "",
+}
+
+// Update the stock
+updateStock, err := gowoocommerce.UpdateProductVariationStock(21, 22, 10, r)
+if err != nil {
+    fmt.Println(err)
+} else {
+    fmt.Println(updateStock)
+}
+```
+
 ### Delete a product variant
 
 If you want to remove a variant, you can do this with the following function. This requires a productID and a variantID. The description of the API endpoint can be found [here](https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#delete-a-product-variation).
@@ -849,6 +893,7 @@ if err != nil {
     fmt.Println(category)
 }
 ```
+
 
 ### Read all orders
 
