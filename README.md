@@ -107,7 +107,6 @@ body := gowoocommerce.ProductsBody{
     MenuOrder:         0,
     RelatedIds:        nil,
     MetaData:          nil,
-    StockStatus:       "instock",
 }
 
 // Add an image
@@ -198,7 +197,6 @@ body := gowoocommerce.ProductsBody{
     MenuOrder:         0,
     RelatedIds:        nil,
     MetaData:          nil,
-    StockStatus:       "instock",
 }
 
 // Add an image
@@ -640,7 +638,6 @@ body := gowoocommerce.ProductVariationsBody{
     TaxClass:          "",
     ManageStock:       false,
     StockQuantity:     nil,
-    StockStatus:       "instock",
     Backorders:        "no",
     BackordersAllowed: false,
     Backordered:       false,
@@ -709,7 +706,6 @@ body := gowoocommerce.ProductVariationsBody{
     TaxClass:          "",
     ManageStock:       false,
     StockQuantity:     nil,
-    StockStatus:       "instock",
     Backorders:        "no",
     BackordersAllowed: false,
     Backordered:       false,

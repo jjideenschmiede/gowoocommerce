@@ -76,7 +76,6 @@ type ProductsBody struct {
 	MenuOrder         int                      `json:"menu_order"`
 	RelatedIds        []interface{}            `json:"related_ids"`
 	MetaData          []interface{}            `json:"meta_data"`
-	StockStatus       string                   `json:"stock_status"`
 }
 
 type ProductsBodyDimensions struct {
