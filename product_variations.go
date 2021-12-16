@@ -254,6 +254,49 @@ func UpdateProductVariations(productId, variantId int, body ProductVariationsBod
 
 }
 
+// UpdateProductVariationStock is to update the stock
+func UpdateProductVariationStock(productId, variantId, stock int, r Request) (ProductVariationsReturn, error) {
+
+	// Define request body & set stock to body struct
+	type RequestBody struct {
+		StockQuantity int `json:"stock_quantity"`
+	}
+
+	body := RequestBody{
+		StockQuantity: stock,
+	}
+
+	// Convert body
+	convert, err := json.Marshal(body)
+	if err != nil {
+		return ProductVariationsReturn{}, err
+	}
+
+	// Set config for new request
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/%d/variations/%d", productId, variantId), "PUT", convert}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return ProductVariationsReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode ProductVariationsReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return ProductVariationsReturn{}, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
 // DeleteProductVariations is to remove a variant from a product
 func DeleteProductVariations(productId, variantId int, r Request) (ProductVariationsReturn, error) {
 

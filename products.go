@@ -308,6 +308,49 @@ func UpdateProduct(id int, body ProductsBody, r Request) (ProductsReturn, error)
 
 }
 
+// UpdateProductStock is to update a stock
+func UpdateProductStock(id, stock int, r Request) (ProductsReturn, error) {
+
+	// Define request body & set stock to body struct
+	type RequestBody struct {
+		StockQuantity int `json:"stock_quantity"`
+	}
+
+	body := RequestBody{
+		StockQuantity: stock,
+	}
+
+	// Convert body
+	convert, err := json.Marshal(body)
+	if err != nil {
+		return ProductsReturn{}, err
+	}
+
+	// Set config for new request
+	c := Config{fmt.Sprintf("/wp-json/wc/v3/products/%d", id), "PUT", convert}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return ProductsReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode ProductsReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return ProductsReturn{}, err
+	}
+
+	// Return data
+	return decode, err
+
+}
+
 // DeleteProduct is to remove a product from woocommerce
 func DeleteProduct(id int, force bool, r Request) (ProductsReturn, error) {
 
