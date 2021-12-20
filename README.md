@@ -821,7 +821,7 @@ body := gowoocommerce.ProductCategory{
     Description: "",
     Display:     "",
     MenuOrder:   0,
-    Image: gowoocommerce.ProductCategoryImage{
+    Image: &gowoocommerce.ProductCategoryImage{
         Src: "",
     },
 }

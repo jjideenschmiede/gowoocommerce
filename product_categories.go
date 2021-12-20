@@ -18,12 +18,12 @@ import (
 
 // ProductCategory is to structure the category data
 type ProductCategory struct {
-	Name        string               `json:"name,omitempty"`
-	Parent      int                  `json:"parent,omitempty"`
-	Description string               `json:"description,omitempty"`
-	Display     string               `json:"display,omitempty"`
-	MenuOrder   int                  `json:"menu_order,omitempty"`
-	Image       ProductCategoryImage `json:"image,omitempty"`
+	Name        string                `json:"name,omitempty"`
+	Parent      int                   `json:"parent,omitempty"`
+	Description string                `json:"description,omitempty"`
+	Display     string                `json:"display,omitempty"`
+	MenuOrder   int                   `json:"menu_order,omitempty"`
+	Image       *ProductCategoryImage `json:"image,omitempty"`
 }
 
 type ProductCategoryImage struct {
