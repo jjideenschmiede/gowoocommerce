@@ -113,7 +113,7 @@ type OrdersReturn struct {
 		Compound         bool          `json:"compound"`
 		TaxTotal         string        `json:"tax_total"`
 		ShippingTaxTotal string        `json:"shipping_tax_total"`
-		RatePercent      int           `json:"rate_percent"`
+		RatePercent      float64       `json:"rate_percent"`
 		MetaData         []interface{} `json:"meta_data"`
 	} `json:"tax_lines"`
 	ShippingLines []struct {
