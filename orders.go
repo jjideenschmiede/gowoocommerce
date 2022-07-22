@@ -14,28 +14,27 @@ package gowoocommerce
 import (
 	"encoding/json"
 	"fmt"
-	"time"
 )
 
 // OrdersReturn is to decode the json data
 type OrdersReturn struct {
-	Id               int       `json:"id"`
-	ParentId         int       `json:"parent_id"`
-	Status           string    `json:"status"`
-	Currency         string    `json:"currency"`
-	Version          string    `json:"version"`
-	PricesIncludeTax bool      `json:"prices_include_tax"`
-	DateCreated      time.Time `json:"date_created"`
-	DateModified     time.Time `json:"date_modified"`
-	DiscountTotal    string    `json:"discount_total"`
-	DiscountTax      string    `json:"discount_tax"`
-	ShippingTotal    string    `json:"shipping_total"`
-	ShippingTax      string    `json:"shipping_tax"`
-	CartTax          string    `json:"cart_tax"`
-	Total            string    `json:"total"`
-	TotalTax         string    `json:"total_tax"`
-	CustomerId       int       `json:"customer_id"`
-	OrderKey         string    `json:"order_key"`
+	Id               int    `json:"id"`
+	ParentId         int    `json:"parent_id"`
+	Status           string `json:"status"`
+	Currency         string `json:"currency"`
+	Version          string `json:"version"`
+	PricesIncludeTax bool   `json:"prices_include_tax"`
+	DateCreated      string `json:"date_created"`
+	DateModified     string `json:"date_modified"`
+	DiscountTotal    string `json:"discount_total"`
+	DiscountTax      string `json:"discount_tax"`
+	ShippingTotal    string `json:"shipping_total"`
+	ShippingTax      string `json:"shipping_tax"`
+	CartTax          string `json:"cart_tax"`
+	Total            string `json:"total"`
+	TotalTax         string `json:"total_tax"`
+	CustomerId       int    `json:"customer_id"`
+	OrderKey         string `json:"order_key"`
 	Billing          struct {
 		FirstName string `json:"first_name"`
 		LastName  string `json:"last_name"`
@@ -63,17 +62,17 @@ type OrdersReturn struct {
 		Phone     string `json:"phone"`
 		Title     string `json:"title"`
 	} `json:"shipping"`
-	PaymentMethod      string    `json:"payment_method"`
-	PaymentMethodTitle string    `json:"payment_method_title"`
-	TransactionId      string    `json:"transaction_id"`
-	CustomerIpAddress  string    `json:"customer_ip_address"`
-	CustomerUserAgent  string    `json:"customer_user_agent"`
-	CreatedVia         string    `json:"created_via"`
-	CustomerNote       string    `json:"customer_note"`
-	DateCompleted      time.Time `json:"date_completed"`
-	DatePaid           time.Time `json:"date_paid"`
-	CartHash           string    `json:"cart_hash"`
-	Number             string    `json:"number"`
+	PaymentMethod      string `json:"payment_method"`
+	PaymentMethodTitle string `json:"payment_method_title"`
+	TransactionId      string `json:"transaction_id"`
+	CustomerIpAddress  string `json:"customer_ip_address"`
+	CustomerUserAgent  string `json:"customer_user_agent"`
+	CreatedVia         string `json:"created_via"`
+	CustomerNote       string `json:"customer_note"`
+	DateCompleted      string `json:"date_completed"`
+	DatePaid           string `json:"date_paid"`
+	CartHash           string `json:"cart_hash"`
+	Number             string `json:"number"`
 	MetaData           []struct {
 		Id    int    `json:"id"`
 		Key   string `json:"key"`
@@ -136,10 +135,10 @@ type OrdersReturn struct {
 	FeeLines         []interface{} `json:"fee_lines"`
 	CouponLines      []interface{} `json:"coupon_lines"`
 	Refunds          []interface{} `json:"refunds"`
-	DateCreatedGmt   time.Time     `json:"date_created_gmt"`
-	DateModifiedGmt  time.Time     `json:"date_modified_gmt"`
-	DateCompletedGmt time.Time     `json:"date_completed_gmt"`
-	DatePaidGmt      time.Time     `json:"date_paid_gmt"`
+	DateCreatedGmt   string        `json:"date_created_gmt"`
+	DateModifiedGmt  string        `json:"date_modified_gmt"`
+	DateCompletedGmt string        `json:"date_completed_gmt"`
+	DatePaidGmt      string        `json:"date_paid_gmt"`
 	Shipments        []struct {
 		Id                 int         `json:"id"`
 		DateCreated        string      `json:"date_created"`
