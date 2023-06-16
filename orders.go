@@ -62,23 +62,19 @@ type OrdersReturn struct {
 		Phone     string `json:"phone"`
 		Title     string `json:"title"`
 	} `json:"shipping"`
-	PaymentMethod      string `json:"payment_method"`
-	PaymentMethodTitle string `json:"payment_method_title"`
-	TransactionId      string `json:"transaction_id"`
-	CustomerIpAddress  string `json:"customer_ip_address"`
-	CustomerUserAgent  string `json:"customer_user_agent"`
-	CreatedVia         string `json:"created_via"`
-	CustomerNote       string `json:"customer_note"`
-	DateCompleted      string `json:"date_completed"`
-	DatePaid           string `json:"date_paid"`
-	CartHash           string `json:"cart_hash"`
-	Number             string `json:"number"`
-	MetaData           []struct {
-		Id    int    `json:"id"`
-		Key   string `json:"key"`
-		Value string `json:"value"`
-	} `json:"meta_data"`
-	LineItems []struct {
+	PaymentMethod      string          `json:"payment_method"`
+	PaymentMethodTitle string          `json:"payment_method_title"`
+	TransactionId      string          `json:"transaction_id"`
+	CustomerIpAddress  string          `json:"customer_ip_address"`
+	CustomerUserAgent  string          `json:"customer_user_agent"`
+	CreatedVia         string          `json:"created_via"`
+	CustomerNote       string          `json:"customer_note"`
+	DateCompleted      string          `json:"date_completed"`
+	DatePaid           string          `json:"date_paid"`
+	CartHash           string          `json:"cart_hash"`
+	Number             string          `json:"number"`
+	MetaData           json.RawMessage `json:"meta_data"`
+	LineItems          []struct {
 		Id          int    `json:"id"`
 		Name        string `json:"name"`
 		ProductId   int    `json:"product_id"`
