@@ -90,43 +90,31 @@ type OrdersReturn struct {
 			Total    string `json:"total"`
 			Subtotal string `json:"subtotal"`
 		} `json:"taxes"`
-		MetaData []struct {
-			Id           int    `json:"id"`
-			Key          string `json:"key"`
-			Value        string `json:"value"`
-			DisplayKey   string `json:"display_key"`
-			DisplayValue string `json:"display_value"`
-		} `json:"meta_data"`
-		Sku        string      `json:"sku"`
-		Price      float64     `json:"price"`
-		ParentName interface{} `json:"parent_name"`
+		MetaData   json.RawMessage `json:"meta_data"`
+		Sku        string          `json:"sku"`
+		Price      float64         `json:"price"`
+		ParentName interface{}     `json:"parent_name"`
 	} `json:"line_items"`
 	TaxLines []struct {
-		Id               int           `json:"id"`
-		RateCode         string        `json:"rate_code"`
-		RateId           int           `json:"rate_id"`
-		Label            string        `json:"label"`
-		Compound         bool          `json:"compound"`
-		TaxTotal         string        `json:"tax_total"`
-		ShippingTaxTotal string        `json:"shipping_tax_total"`
-		RatePercent      float64       `json:"rate_percent"`
-		MetaData         []interface{} `json:"meta_data"`
+		Id               int             `json:"id"`
+		RateCode         string          `json:"rate_code"`
+		RateId           int             `json:"rate_id"`
+		Label            string          `json:"label"`
+		Compound         bool            `json:"compound"`
+		TaxTotal         string          `json:"tax_total"`
+		ShippingTaxTotal string          `json:"shipping_tax_total"`
+		RatePercent      float64         `json:"rate_percent"`
+		MetaData         json.RawMessage `json:"meta_data"`
 	} `json:"tax_lines"`
 	ShippingLines []struct {
-		Id          int           `json:"id"`
-		MethodTitle string        `json:"method_title"`
-		MethodId    string        `json:"method_id"`
-		InstanceId  string        `json:"instance_id"`
-		Total       string        `json:"total"`
-		TotalTax    string        `json:"total_tax"`
-		Taxes       []interface{} `json:"taxes"`
-		MetaData    []struct {
-			Id           int         `json:"id"`
-			Key          string      `json:"key"`
-			Value        interface{} `json:"value"`
-			DisplayKey   string      `json:"display_key"`
-			DisplayValue interface{} `json:"display_value"`
-		} `json:"meta_data"`
+		Id          int             `json:"id"`
+		MethodTitle string          `json:"method_title"`
+		MethodId    string          `json:"method_id"`
+		InstanceId  string          `json:"instance_id"`
+		Total       string          `json:"total"`
+		TotalTax    string          `json:"total_tax"`
+		Taxes       []interface{}   `json:"taxes"`
+		MetaData    json.RawMessage `json:"meta_data"`
 	} `json:"shipping_lines"`
 	FeeLines         []interface{} `json:"fee_lines"`
 	CouponLines      []interface{} `json:"coupon_lines"`
